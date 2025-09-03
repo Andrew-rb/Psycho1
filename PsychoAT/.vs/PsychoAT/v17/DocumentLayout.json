@@ -1,0 +1,166 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|d:\\zaxar_sd\\_\u0431\u0433\u0443\u0438\u0440 \u0443\u0447\u0451\u0431\u0430\\c# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\psycho1\\psychoat\\test start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\test choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\test start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\statistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:statistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 135,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Test Start.cs",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test Start.cs",
+              "RelativeDocumentMoniker": "Test Start.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test Start.cs",
+              "RelativeToolTip": "Test Start.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAkwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T17:10:20.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T17:08:38.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Start.cs",
+              "RelativeDocumentMoniker": "Start.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\PsychoAT\\Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\PsychoAT\\Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:05:25.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Statistics.cs",
+              "RelativeDocumentMoniker": "Statistics.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\PsychoAT\\Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\PsychoAT\\Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:05:58.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Test choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test choice.cs",
+              "RelativeDocumentMoniker": "Test choice.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\PsychoAT\\Test choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\PsychoAT\\Test choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:06:27.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Test Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test Start.cs",
+              "RelativeDocumentMoniker": "Test Start.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Test Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:04:05.21Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Test.cs",
+              "RelativeDocumentMoniker": "Test.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\PsychoAT\\Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\PsychoAT\\Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:04:18.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Psycho1\\PsychoAT\\Result.cs",
+              "RelativeDocumentMoniker": "Result.cs",
+              "ToolTip": "D:\\Zaxar_sd\\_\u0411\u0413\u0423\u0418\u0420 \u0443\u0447\u0451\u0431\u0430\\C# \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\PsychoAT\\Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\PsychoAT\\Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T16:04:32.309Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 127,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
