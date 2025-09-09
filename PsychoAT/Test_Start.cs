@@ -15,6 +15,31 @@ namespace PsychoAT
         public Test_Start()
         {
             InitializeComponent();
+            SetPlaceholder(textBox1, "Введите имя...");
+        }
+
+        private void SetPlaceholder(TextBox tb, string placeholder)
+        {
+            tb.ForeColor = Color.Gray;
+            tb.Text = placeholder;
+
+            tb.Enter += (s, ev) =>
+            {
+                if (tb.Text == placeholder)
+                {
+                    tb.Text = "";
+                    tb.ForeColor = Color.Black;
+                }
+            };
+
+            tb.Leave += (s, ev) =>
+            {
+                if (string.IsNullOrWhiteSpace(tb.Text))
+                {
+                    tb.ForeColor = Color.Gray;
+                    tb.Text = placeholder;
+                }
+            };
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -33,6 +58,11 @@ namespace PsychoAT
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
