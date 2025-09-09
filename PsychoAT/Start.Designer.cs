@@ -28,48 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Тесты = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
-            // button1
+            // Тесты
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(347, 206);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(363, 100);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Тесты";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Тесты.Animated = true;
+            this.Тесты.BorderRadius = 20;
+            this.Тесты.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Тесты.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Тесты.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Тесты.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Тесты.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
+            this.Тесты.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 25.2F, System.Drawing.FontStyle.Bold);
+            this.Тесты.ForeColor = System.Drawing.Color.White;
+            this.Тесты.Location = new System.Drawing.Point(360, 240);
+            this.Тесты.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Тесты.Name = "Тесты";
+            this.Тесты.Size = new System.Drawing.Size(384, 169);
+            this.Тесты.TabIndex = 0;
+            this.Тесты.Text = "Тесты";
+            this.Тесты.Click += new System.EventHandler(this.Тесты_Click);
             // 
-            // button2
+            // guna2Button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(347, 393);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(363, 100);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Статистика";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.guna2Button2.Animated = true;
+            this.guna2Button2.BorderRadius = 20;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(360, 472);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.ShadowDecoration.BorderRadius = 90;
+            this.guna2Button2.ShadowDecoration.Color = System.Drawing.Color.Silver;
+            this.guna2Button2.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(10);
+            this.guna2Button2.Size = new System.Drawing.Size(384, 169);
+            this.guna2Button2.TabIndex = 1;
+            this.guna2Button2.Text = "Статистика";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(199)))), ((int)(((byte)(167)))));
             this.ClientSize = new System.Drawing.Size(1078, 864);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.Тесты);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Start";
             this.Text = "Start";
+            this.Load += new System.EventHandler(this.Start_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private Guna.UI2.WinForms.Guna2Button Тесты;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }

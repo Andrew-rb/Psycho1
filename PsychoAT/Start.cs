@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace PsychoAT
@@ -17,19 +12,38 @@ namespace PsychoAT
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) 
+        {
+        
+        }
+        private void button2_Click(object sender, EventArgs e) 
+        { 
+
+        }
+        private void button2_Click_1(object sender, EventArgs e) 
+        {
+
+        }
+        private void Start_Load(object sender, EventArgs e) 
+        {
+        
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Тесты_Click(object sender, EventArgs e)
         {
-
+            Program.w_Start.Hide();
+            Program.w_Test_Choice.Show();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            Program.w_Start.Hide();
+            Program.w_Stat.Show();
         }
     }
 }
