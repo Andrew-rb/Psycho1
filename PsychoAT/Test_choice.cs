@@ -43,5 +43,10 @@ namespace PsychoAT
             Program.w_Test_Choice.Hide();
             Program.w_Test_Start.Show();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
