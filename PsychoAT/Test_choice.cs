@@ -48,5 +48,10 @@ namespace PsychoAT
         {
 
         }
+
+        private void Test_choice_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
