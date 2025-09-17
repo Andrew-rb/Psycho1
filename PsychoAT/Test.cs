@@ -41,5 +41,76 @@ namespace PsychoAT
         {
             Application.Exit();
         }
+
+        private void Test_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Answer1_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = false;
+            Answer2.Enabled = true;
+            Answer3.Enabled = true;
+            Answer4.Enabled = true;
+            Answer5.Enabled = true;
+            Answer6.Enabled = true;
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Answer2_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = true;
+            Answer2.Enabled = false;
+            Answer3.Enabled = true;
+            Answer4.Enabled = true;
+            Answer5.Enabled = true;
+            Answer6.Enabled = true;
+        }
+
+        private void Answer3_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = true;
+            Answer2.Enabled = true;
+            Answer3.Enabled = false;
+            Answer4.Enabled = true;
+            Answer5.Enabled = true;
+            Answer6.Enabled = true;
+        }
+
+        private void Answer4_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = true;
+            Answer2.Enabled = true;
+            Answer3.Enabled = true;
+            Answer4.Enabled = false;
+            Answer5.Enabled = true;
+            Answer6.Enabled = true;
+        }
+
+        private void Answer5_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = true;
+            Answer2.Enabled = true;
+            Answer3.Enabled = true;
+            Answer4.Enabled = true;
+            Answer5.Enabled = false;
+            Answer6.Enabled = true;
+        }
+
+        private void Answer6_Click(object sender, EventArgs e)
+        {
+            Answer1.Enabled = true;
+            Answer2.Enabled = true;
+            Answer3.Enabled = true;
+            Answer4.Enabled = true;
+            Answer5.Enabled = true;
+            Answer6.Enabled = false;
+        }
     }
 }
