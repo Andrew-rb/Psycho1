@@ -42,7 +42,9 @@ namespace PsychoAT
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            Program.db.show_current_test();
             Program.db.show_all_tests();
+            
             Program.w_Start.Hide();
             Program.w_Stat.Show();
         }

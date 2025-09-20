@@ -53,7 +53,6 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.85243F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.17176F));
@@ -80,8 +79,8 @@
             this.tableLayoutPanel1.Controls.Add(this.Author4, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.Author5, 3, 6);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(-6, -27);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(-9, -42);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.174196F));
@@ -94,7 +93,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.776236F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.814395F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.174196F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(733, 591);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1100, 909);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // WnName
@@ -104,10 +103,10 @@
             this.WnName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WnName.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.WnName.ForeColor = System.Drawing.Color.White;
-            this.WnName.Location = new System.Drawing.Point(45, 64);
-            this.WnName.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.WnName.Location = new System.Drawing.Point(68, 98);
+            this.WnName.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
             this.WnName.Name = "WnName";
-            this.WnName.Size = new System.Drawing.Size(274, 59);
+            this.WnName.Size = new System.Drawing.Size(411, 92);
             this.WnName.TabIndex = 31;
             this.WnName.Text = "Выбор теста";
             this.WnName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,10 +123,10 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.guna2Button1.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(37, 140);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button1.Location = new System.Drawing.Point(56, 216);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(276, 55);
+            this.guna2Button1.Size = new System.Drawing.Size(414, 85);
             this.guna2Button1.TabIndex = 18;
             this.guna2Button1.Text = "Тест1";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -144,12 +143,13 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.guna2Button2.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(37, 210);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button2.Location = new System.Drawing.Point(56, 324);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(276, 55);
+            this.guna2Button2.Size = new System.Drawing.Size(414, 85);
             this.guna2Button2.TabIndex = 19;
             this.guna2Button2.Text = "Тест1";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button3
             // 
@@ -163,10 +163,10 @@
             this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.guna2Button3.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(37, 280);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button3.Location = new System.Drawing.Point(56, 432);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(276, 55);
+            this.guna2Button3.Size = new System.Drawing.Size(414, 85);
             this.guna2Button3.TabIndex = 20;
             this.guna2Button3.Text = "Тест1";
             // 
@@ -182,10 +182,10 @@
             this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.guna2Button4.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(37, 350);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button4.Location = new System.Drawing.Point(56, 540);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(276, 55);
+            this.guna2Button4.Size = new System.Drawing.Size(414, 85);
             this.guna2Button4.TabIndex = 21;
             this.guna2Button4.Text = "Тест1";
             // 
@@ -201,10 +201,10 @@
             this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.guna2Button5.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(37, 417);
-            this.guna2Button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button5.Location = new System.Drawing.Point(56, 643);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(276, 55);
+            this.guna2Button5.Size = new System.Drawing.Size(414, 85);
             this.guna2Button5.TabIndex = 22;
             this.guna2Button5.Text = "Тест1";
             // 
@@ -220,10 +220,10 @@
             this.guna2Button17.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(88)))), ((int)(((byte)(76)))));
             this.guna2Button17.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button17.ForeColor = System.Drawing.Color.White;
-            this.guna2Button17.Location = new System.Drawing.Point(37, 537);
-            this.guna2Button17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button17.Location = new System.Drawing.Point(56, 827);
+            this.guna2Button17.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button17.Name = "guna2Button17";
-            this.guna2Button17.Size = new System.Drawing.Size(114, 49);
+            this.guna2Button17.Size = new System.Drawing.Size(171, 75);
             this.guna2Button17.TabIndex = 0;
             this.guna2Button17.Text = "Назад";
             // 
@@ -239,10 +239,10 @@
             this.guna2Button18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(88)))), ((int)(((byte)(76)))));
             this.guna2Button18.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button18.ForeColor = System.Drawing.Color.White;
-            this.guna2Button18.Location = new System.Drawing.Point(397, 537);
-            this.guna2Button18.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button18.Location = new System.Drawing.Point(596, 827);
+            this.guna2Button18.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button18.Name = "guna2Button18";
-            this.guna2Button18.Size = new System.Drawing.Size(114, 49);
+            this.guna2Button18.Size = new System.Drawing.Size(171, 75);
             this.guna2Button18.TabIndex = 0;
             this.guna2Button18.Text = "Вперед";
             // 
@@ -258,10 +258,10 @@
             this.guna2Button19.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
             this.guna2Button19.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button19.ForeColor = System.Drawing.Color.White;
-            this.guna2Button19.Location = new System.Drawing.Point(548, 536);
-            this.guna2Button19.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button19.Location = new System.Drawing.Point(823, 826);
+            this.guna2Button19.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button19.Name = "guna2Button19";
-            this.guna2Button19.Size = new System.Drawing.Size(123, 52);
+            this.guna2Button19.Size = new System.Drawing.Size(184, 78);
             this.guna2Button19.TabIndex = 29;
             this.guna2Button19.Text = "Выход";
             this.guna2Button19.Click += new System.EventHandler(this.guna2Button19_Click);
@@ -273,11 +273,11 @@
             this.TypeT1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TypeT1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeT1.ForeColor = System.Drawing.Color.White;
-            this.TypeT1.Location = new System.Drawing.Point(336, 139);
-            this.TypeT1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.TypeT1.Location = new System.Drawing.Point(504, 214);
+            this.TypeT1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.TypeT1.Name = "TypeT1";
-            this.TypeT1.Padding = new System.Windows.Forms.Padding(1);
-            this.TypeT1.Size = new System.Drawing.Size(170, 58);
+            this.TypeT1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TypeT1.Size = new System.Drawing.Size(256, 90);
             this.TypeT1.TabIndex = 32;
             this.TypeT1.Text = "Неизвестный тип";
             this.TypeT1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,11 +290,11 @@
             this.TypeT2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TypeT2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeT2.ForeColor = System.Drawing.Color.White;
-            this.TypeT2.Location = new System.Drawing.Point(336, 209);
-            this.TypeT2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.TypeT2.Location = new System.Drawing.Point(504, 322);
+            this.TypeT2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.TypeT2.Name = "TypeT2";
-            this.TypeT2.Padding = new System.Windows.Forms.Padding(1);
-            this.TypeT2.Size = new System.Drawing.Size(170, 58);
+            this.TypeT2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TypeT2.Size = new System.Drawing.Size(256, 90);
             this.TypeT2.TabIndex = 33;
             this.TypeT2.Text = "Неизвестный тип";
             this.TypeT2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,11 +306,11 @@
             this.TypeT3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TypeT3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeT3.ForeColor = System.Drawing.Color.White;
-            this.TypeT3.Location = new System.Drawing.Point(336, 279);
-            this.TypeT3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.TypeT3.Location = new System.Drawing.Point(504, 430);
+            this.TypeT3.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.TypeT3.Name = "TypeT3";
-            this.TypeT3.Padding = new System.Windows.Forms.Padding(1);
-            this.TypeT3.Size = new System.Drawing.Size(170, 58);
+            this.TypeT3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TypeT3.Size = new System.Drawing.Size(256, 90);
             this.TypeT3.TabIndex = 34;
             this.TypeT3.Text = "Неизвестный тип";
             this.TypeT3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,11 +322,11 @@
             this.TypeT4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TypeT4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeT4.ForeColor = System.Drawing.Color.White;
-            this.TypeT4.Location = new System.Drawing.Point(336, 349);
-            this.TypeT4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.TypeT4.Location = new System.Drawing.Point(504, 538);
+            this.TypeT4.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.TypeT4.Name = "TypeT4";
-            this.TypeT4.Padding = new System.Windows.Forms.Padding(1);
-            this.TypeT4.Size = new System.Drawing.Size(170, 58);
+            this.TypeT4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TypeT4.Size = new System.Drawing.Size(256, 90);
             this.TypeT4.TabIndex = 35;
             this.TypeT4.Text = "Неизвестный тип";
             this.TypeT4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -338,11 +338,11 @@
             this.TypeT5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TypeT5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeT5.ForeColor = System.Drawing.Color.White;
-            this.TypeT5.Location = new System.Drawing.Point(336, 419);
-            this.TypeT5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.TypeT5.Location = new System.Drawing.Point(504, 646);
+            this.TypeT5.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.TypeT5.Name = "TypeT5";
-            this.TypeT5.Padding = new System.Windows.Forms.Padding(1);
-            this.TypeT5.Size = new System.Drawing.Size(170, 52);
+            this.TypeT5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TypeT5.Size = new System.Drawing.Size(256, 80);
             this.TypeT5.TabIndex = 36;
             this.TypeT5.Text = "Неизвестный тип";
             this.TypeT5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -354,11 +354,11 @@
             this.Author1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Author1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Author1.ForeColor = System.Drawing.Color.White;
-            this.Author1.Location = new System.Drawing.Point(520, 139);
-            this.Author1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Author1.Location = new System.Drawing.Point(780, 214);
+            this.Author1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Author1.Name = "Author1";
-            this.Author1.Padding = new System.Windows.Forms.Padding(1);
-            this.Author1.Size = new System.Drawing.Size(146, 58);
+            this.Author1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Author1.Size = new System.Drawing.Size(220, 90);
             this.Author1.TabIndex = 37;
             this.Author1.Text = "Неизвестный Автор";
             this.Author1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -370,11 +370,11 @@
             this.Author2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Author2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Author2.ForeColor = System.Drawing.Color.White;
-            this.Author2.Location = new System.Drawing.Point(520, 209);
-            this.Author2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Author2.Location = new System.Drawing.Point(780, 322);
+            this.Author2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Author2.Name = "Author2";
-            this.Author2.Padding = new System.Windows.Forms.Padding(1);
-            this.Author2.Size = new System.Drawing.Size(146, 58);
+            this.Author2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Author2.Size = new System.Drawing.Size(220, 90);
             this.Author2.TabIndex = 38;
             this.Author2.Text = "Неизвестный Автор";
             this.Author2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -386,11 +386,11 @@
             this.Author3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Author3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Author3.ForeColor = System.Drawing.Color.White;
-            this.Author3.Location = new System.Drawing.Point(520, 279);
-            this.Author3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Author3.Location = new System.Drawing.Point(780, 430);
+            this.Author3.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Author3.Name = "Author3";
-            this.Author3.Padding = new System.Windows.Forms.Padding(1);
-            this.Author3.Size = new System.Drawing.Size(146, 58);
+            this.Author3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Author3.Size = new System.Drawing.Size(220, 90);
             this.Author3.TabIndex = 39;
             this.Author3.Text = "Неизвестный Автор";
             this.Author3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,11 +402,11 @@
             this.Author4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Author4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Author4.ForeColor = System.Drawing.Color.White;
-            this.Author4.Location = new System.Drawing.Point(520, 349);
-            this.Author4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Author4.Location = new System.Drawing.Point(780, 538);
+            this.Author4.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Author4.Name = "Author4";
-            this.Author4.Padding = new System.Windows.Forms.Padding(1);
-            this.Author4.Size = new System.Drawing.Size(146, 58);
+            this.Author4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Author4.Size = new System.Drawing.Size(220, 90);
             this.Author4.TabIndex = 40;
             this.Author4.Text = "Неизвестный Автор";
             this.Author4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -418,23 +418,24 @@
             this.Author5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Author5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Author5.ForeColor = System.Drawing.Color.White;
-            this.Author5.Location = new System.Drawing.Point(520, 419);
-            this.Author5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Author5.Location = new System.Drawing.Point(780, 646);
+            this.Author5.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Author5.Name = "Author5";
-            this.Author5.Padding = new System.Windows.Forms.Padding(1);
-            this.Author5.Size = new System.Drawing.Size(146, 52);
+            this.Author5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Author5.Size = new System.Drawing.Size(220, 80);
             this.Author5.TabIndex = 41;
             this.Author5.Text = "Неизвестный Автор";
             this.Author5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Test_choice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(234)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(719, 562);
+            this.ClientSize = new System.Drawing.Size(1078, 865);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Test_choice";
             this.Text = "Test_choice";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Test_choice_FormClosed);

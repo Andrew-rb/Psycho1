@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace PsychoAT
 {
@@ -66,7 +67,7 @@ namespace PsychoAT
     /*Базовые установки
     1) Значения в классах по умолчанию означают, что они будут игнорироваться (далее пример)
     2) При загрузке всех тестов, загружается всё кроме набора вопросов к ним
-    3) Комментарии пишем на каком хоти языке (Хотя для Никиты лучше на русском)*/
+    3) Комментарии пишем на русском
 
 
     /*Классы и методы загрузки тестов из БД*/
@@ -74,6 +75,7 @@ namespace PsychoAT
     {
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
+        public Psycho_Test current_test = null;
 
         public string version = "3";
         private string dbPath = "Data Source=Psycho1\\PsychoAT\\tests.db;Version=3;";
@@ -86,6 +88,7 @@ namespace PsychoAT
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             dbPath = Path.Combine(baseDir, @"..\..\tests.db");
             connectionString = $"Data Source={dbPath};Version={version};";
+            MessageBox.Show(connectionString);
         }
         
         public void load_all_tests()
@@ -100,6 +103,7 @@ namespace PsychoAT
                 {
                     while (reader.Read())
                     {
+                        
                         int id = Convert.ToInt32(reader["id"]);
                         string title = reader["title"].ToString();
                         tests.Add(new Psycho_Test(id, title));
@@ -107,9 +111,34 @@ namespace PsychoAT
                 }
             }
         }
-        public void load_current_test()
+        public void load_current_test(int id)
         {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "SELECT * FROM tests WHERE id = @id";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
 
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int testId = Convert.ToInt32(reader["id"]);
+                            string title = reader["title"].ToString();
+                            //string type = reader["type"].ToString();
+                            //string author = reader["author"].ToString();
+
+                            // возвращаем объект
+                            current_test = new Psycho_Test(testId, title);
+                            return;
+                        }
+                    }
+                }
+            }
+            current_test = null; // если нет такого id
+            return;
         }
 
         public void show_all_tests()
@@ -119,6 +148,16 @@ namespace PsychoAT
             {
                 output += a.id.ToString() + " | " + a.name + "\n";
             }
+            MessageBox.Show(output);
+        }
+        public void show_current_test()
+        {
+            if(current_test == null)
+            {
+                MessageBox.Show("NULL");
+                return;
+            }
+            string output = current_test.id.ToString() + " | " + current_test.name + "\n";
             MessageBox.Show(output);
         }
 
@@ -158,6 +197,7 @@ namespace PsychoAT
         static void Main()
         {
             db.load_all_tests();
+            db.load_current_test(4);
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
