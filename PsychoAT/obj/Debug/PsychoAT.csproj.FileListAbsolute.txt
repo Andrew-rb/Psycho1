@@ -132,3 +132,5 @@ D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\obj\Debug\P
 D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\obj\Debug\PsychoAT.csproj.Up2Date
 D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\obj\Debug\PsychoAT.exe
 D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\obj\Debug\PsychoAT.pdb
+D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\bin\Debug\tests.db
+D:\Zaxar_sd\_БГУИР учёба\__2\ПУиЧРЧ\Psycho1\PsychoAT\bin\Debug\System.Data.SQLite.dll
