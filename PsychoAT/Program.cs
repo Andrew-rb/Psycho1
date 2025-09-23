@@ -185,6 +185,7 @@ namespace PsychoAT
     internal static class Program
     {
         public static DB_work db = new DB_work();
+        public static Work_with_test_choice_page Test_choise_logic = new Work_with_test_choice_page();
 
 
         public class Current_test
@@ -223,6 +224,40 @@ namespace PsychoAT
             Application.Run(w_Start);
 
 
+        }
+    }
+
+    class Work_with_test_choice_page
+    {
+        public Work_with_test_choice_page() { }
+        private short size = 0, pages = 0, size_last = 0, size_already = 0;
+
+        private void Init_size_and_pages(DB_work DB_data)
+        {
+            foreach (Psycho_Test a in DB_data.tests)
+            {
+                this.size++;
+            }
+            this.size_last = this.size;
+            this.pages = (short)(this.size / 5);
+        }
+
+        private short Adapt_button_on_page()
+        {
+            if (this.size_last <= 5)
+                return this.size_last;
+            else {
+                this.size_last -= 5;
+                this.size_already = 5;
+                return 5;
+            }
+        }
+
+        public void Initial_Show_tests_on_page(DB_work DB_data, Test_choice Test_choise_window)
+        {
+            this.Init_size_and_pages(DB_data);
+            short buttons_on_page = this.Adapt_button_on_page();
+            
         }
     }
 }
