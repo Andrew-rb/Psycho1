@@ -129,7 +129,7 @@
             this.test_choise_1.Size = new System.Drawing.Size(276, 55);
             this.test_choise_1.TabIndex = 18;
             this.test_choise_1.Text = "Тест1";
-            this.test_choise_1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.test_choise_1.Click += new System.EventHandler(this.test_choise_1_Click);
             // 
             // test_choise_2
             // 
@@ -149,7 +149,7 @@
             this.test_choise_2.Size = new System.Drawing.Size(276, 55);
             this.test_choise_2.TabIndex = 19;
             this.test_choise_2.Text = "Тест1";
-            this.test_choise_2.Click += new System.EventHandler(this.guna2Button2_Click);
+            this.test_choise_2.Click += new System.EventHandler(this.test_choise_2_Click);
             // 
             // test_choise_3
             // 
