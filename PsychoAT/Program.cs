@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -100,7 +101,6 @@ namespace PsychoAT
                     while (reader.Read())
                     {
 
-
                         int testId = Convert.ToInt32(reader["id"]);
                         string title = reader["title"].ToString();
                         string type = reader["type"].ToString();
@@ -117,7 +117,7 @@ namespace PsychoAT
                 }
             }
         }
-        public void load_current_test(int id)
+        public Psycho_Test load_current_test(int id)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
@@ -143,13 +143,13 @@ namespace PsychoAT
                                 current_test.amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
                             }
 
-                            return;
+                            return this.current_test;
                         }
                     }
                 }
             }
             current_test = null; // если нет такого id
-            return;
+            return null;
         }
 
         public void show_all_tests()
@@ -157,7 +157,7 @@ namespace PsychoAT
             string output = "";
             foreach (Psycho_Test a in tests)
             {
-                output += a.id.ToString() + " | " + a.name + " | " + current_test.type + " | " + current_test.author + "| вопросов: " + a.amm_of_questions + "\n";
+                output += a.id.ToString() + " | " + a.name + " | " + a.type + " | " + a.author + "| вопросов: " + a.amm_of_questions + "\n";
             }
             MessageBox.Show(output);
         }
@@ -175,6 +175,7 @@ namespace PsychoAT
         public DB_work()
         {
             init_db_path();
+            this.load_all_tests();
         }
     }
 
@@ -185,13 +186,8 @@ namespace PsychoAT
     internal static class Program
     {
         public static DB_work db = new DB_work();
-        public static Work_with_test_choice_page Test_choise_logic = new Work_with_test_choice_page();
-
-
-        public class Current_test
-        {
-
-        }
+        public static Work_with_test_choice_page Test_choise_logic = new Work_with_test_choice_page(db);
+        public static Logic_of_a_main_test_page Main_test_page = new Logic_of_a_main_test_page(db);
 
         public static int window = 0;
 
@@ -208,8 +204,7 @@ namespace PsychoAT
         [STAThread]
         static void Main()
         {
-            db.load_all_tests();
-            db.load_current_test(1);
+            db.load_current_test(0);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -229,35 +224,161 @@ namespace PsychoAT
 
     class Work_with_test_choice_page
     {
-        public Work_with_test_choice_page() { }
-        private short size = 0, pages = 0, size_last = 0, size_already = 0;
+        public Work_with_test_choice_page(DB_work DB_data) {
+            this.Init_array_of_pages(DB_data);
+        }
+        private int Number_of_a_page_we_currently_on = 0;
+        private Psycho_Test[][] Array_of_tests_divided_by_pages;
+        private bool Is_error_occured = false;
 
-        private void Init_size_and_pages(DB_work DB_data)
+        private void Init_array_of_pages(DB_work DB_data)
         {
-            foreach (Psycho_Test a in DB_data.tests)
+            int size_of_list = DB_data.tests.Count;
+            if (size_of_list == 0)
             {
-                this.size++;
+                this.Is_error_occured = true;
+                return;
             }
-            this.size_last = this.size;
-            this.pages = (short)(this.size / 5);
+            int number_of_pages = size_of_list / 5 + 1;
+            this.Array_of_tests_divided_by_pages = new Psycho_Test[number_of_pages][];
+            for (int k = 0; k < number_of_pages; k++)
+            {
+                this.Array_of_tests_divided_by_pages[k] = new Psycho_Test[5];
+            }
+            int i = 0; short j = 0;
+            foreach (Psycho_Test test in DB_data.tests)
+            {
+                if (j < 5)
+                {
+                    this.Array_of_tests_divided_by_pages[i][j] = test;
+                    j++;
+                }
+                else { i++; j = 0; }
+            }
         }
 
-        private short Adapt_button_on_page()
+        public bool Check_for_an_error()
         {
-            if (this.size_last <= 5)
-                return this.size_last;
-            else {
-                this.size_last -= 5;
-                this.size_already = 5;
-                return 5;
+            return this.Is_error_occured;
+        }
+        public Psycho_Test[] Test_for_show_before_load()
+        {
+            return this.Internal_for_load_before_shown();
+        }
+        public Psycho_Test[] Get_on_previous_page()
+        {
+            return this.Internal_shift_down();
+        }
+        public Psycho_Test[] Get_on_next_page()
+        {
+            return this.Internal_shift_up();
+        }
+        private Psycho_Test[] Internal_for_load_before_shown()
+        {
+            return this.Array_of_tests_divided_by_pages[Number_of_a_page_we_currently_on];
+        }
+        private Psycho_Test[] Internal_shift_down()
+        {
+            this.Number_of_a_page_we_currently_on--;
+            return this.Array_of_tests_divided_by_pages[this.Number_of_a_page_we_currently_on];
+        }
+        private Psycho_Test[] Internal_shift_up()
+        {
+            this.Number_of_a_page_we_currently_on++;
+            return this.Array_of_tests_divided_by_pages[this.Number_of_a_page_we_currently_on];
+        }
+        public bool Is_page_last()
+        {
+            return this.Number_of_a_page_we_currently_on == this.Array_of_tests_divided_by_pages.Length-1;
+        }
+        public bool Is_page_first()
+        {
+            return this.Number_of_a_page_we_currently_on == 0;
+        }
+        public bool Is_it_only_page()
+        {
+            return this.Array_of_tests_divided_by_pages.Length == 1;
+        }
+    }
+
+    class Logic_of_a_main_test_page
+    {
+        public Logic_of_a_main_test_page(DB_work DB_data) { this.db = DB_data; }
+
+        private Psycho_Test Current_test;
+        private DB_work db;
+        private string[] Array_of_questions_texts;
+        private Answer[][] Array_of_answers_to_each_question;
+        private int Current_question_on_a_page = 0;
+
+        public void Set_current_test(Psycho_Test Chosen_test)
+        {
+            this.Internal_set_current_test(Chosen_test);
+        }
+        private void Internal_set_current_test(Psycho_Test Chos_test)
+        {
+            this.Current_test = this.db.load_current_test(Chos_test.id);
+            this.Initialize_both_internal_array();
+           
+        }
+        private void Initialize_both_internal_array()
+        {
+            int size_of_questions_list = this.Current_test.questions.Count;
+            if(size_of_questions_list == 0)
+            {
+                MessageBox.Show("No questions in test!! Check BD!!!!", "BD error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.Array_of_questions_texts = new string[size_of_questions_list];
+            short j = 0;
+            foreach (Question raw_question in this.Current_test.questions)
+            {
+                this.Array_of_questions_texts[j] = raw_question.text;
+                j++;
+            }
+            this.Array_of_answers_to_each_question = new Answer[size_of_questions_list][];
+            j = 0;
+            foreach(Question a in this.Current_test.questions)
+            {
+                this.Array_of_answers_to_each_question[j] = a.answers.ToArray();
+                j++;
             }
         }
-
-        public void Initial_Show_tests_on_page(DB_work DB_data, Test_choice Test_choise_window)
+        public Answer[] Get_array_of_answers()
         {
-            this.Init_size_and_pages(DB_data);
-            short buttons_on_page = this.Adapt_button_on_page();
-            
+            return this.Internal_get_arra_of_questions();
+        }
+        private Answer[] Internal_get_arra_of_questions()
+        {
+            return this.Array_of_answers_to_each_question[Current_question_on_a_page];
+        }
+        public string Get_question_text()
+        {
+            return this.Internal_get_quest_name();
+        }
+        private string Internal_get_quest_name()
+        {
+            return this.Array_of_questions_texts[this.Current_question_on_a_page];
+        }
+        public bool Is_it_last_question()
+        {
+            return this.Current_question_on_a_page == this.Array_of_questions_texts.Length-1;
+        }
+        public bool Is_it_first_question()
+        {
+            return this.Current_question_on_a_page == 0;
+        }
+        public bool Is_there_only_one_page()
+        {
+            return this.Array_of_questions_texts.Length == 1;
+        }
+        public void Go_to_the_next_question()
+        {
+            this.Current_question_on_a_page++;
+        }
+        public void Go_to_the_previous_question()
+        {
+            this.Current_question_on_a_page--;
         }
     }
 }
