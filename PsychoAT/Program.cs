@@ -19,44 +19,61 @@ namespace PsychoAT
     {
 
         //для конкретного теста
-        public Psycho_Test(int id, string title, string type = "none", string author = "none")
+        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null)
         {
             this.id = id;
             this.name = title;
             this.type = type;
             this.author = author;
+            this.questions = questions; //список вопросов
         }
 
         public int id = -1; //id в БД
-        public string name = "none"; // Название
-        public string type = "none"; // Тип
-        public string author = "none"; // Автор
+        public string name; // Название
+        public string type; // Тип
+        public string author; // Автор
         public int amm_of_questions = 0; // Количество вопросов в тесте
 
-        public List<Question> questions = new List<Question>(0); //список вопросов
+        public List<Question> questions; //список вопросов
 
     }
     //Question storage
     public class Question
     {
-        public int id = -1;
-        public string text = "none";
-        public List<Answer> answers = new List<Answer>(0);
+        public Question(int id = -1, string text = "none", List<Answer> answers = null) {
+            this.id = id;
+            this.text = text;
+            this.answers = answers;
+        }
+        public int id;
+        public string text;
+        public List<Answer> answers;
 
     }
     //Answer storage
     public class Answer
     {
-        public int id = -1;
-        public string text = "none";
-        public List<Points_cods> points_cods = new List<Points_cods>();
+        public Answer(int id = -1, string text = "none", List<Points_cods> points_Cods = null)
+        {
+            this.id = id;
+            this.text = text;
+            this.points_cods = points_Cods;
+        }
+        public int id;
+        public string text;
+        public List<Points_cods> points_cods;
     }
     //Storage of type and value of points of current answer
     public class Points_cods
     {
-        public int id = -1;
-        public string type = "none";
-        public int value = -1001;
+        public Points_cods(int id = -1, string type = "none", int value = - 1001) {
+            this.id =id;
+            this.type =type;
+            this.value =value;
+        }
+        public int id;
+        public string type;
+        public int value;
     }
 
 
@@ -143,6 +160,65 @@ namespace PsychoAT
                                 current_test.amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
                             }
 
+                            using (SQLiteCommand qCmd = new SQLiteCommand("SELECT * FROM questions WHERE test_id = @testId", conn))
+                            {
+                                qCmd.Parameters.AddWithValue("@testId", testId);
+
+                                using (SQLiteDataReader qReader = qCmd.ExecuteReader())
+                                {
+                                    current_test.questions = new List<Question>();
+
+                                    while (qReader.Read())
+                                    {
+                                        int questionId = Convert.ToInt32(qReader["id"]);
+                                        string questionText = qReader["text"].ToString();
+
+                                        Question question = new Question(questionId, questionText, new List<Answer>());
+
+                                        // Загружаем ответы для этого вопроса
+                                        using (SQLiteCommand aCmd = new SQLiteCommand("SELECT * FROM answers WHERE question_id = @qid", conn))
+                                        {
+                                            aCmd.Parameters.AddWithValue("@qid", questionId);
+
+                                            using (SQLiteDataReader aReader = aCmd.ExecuteReader())
+                                            {
+                                                while (aReader.Read())
+                                                {
+                                                    int answerId = Convert.ToInt32(aReader["id"]);
+                                                    string answerText = aReader["text"].ToString();
+
+                                                    Answer answer = new Answer(answerId, answerText, new List<Points_cods>());
+
+                                                    // Загружаем баллы для этого ответа
+                                                    using (SQLiteCommand pCmd = new SQLiteCommand("SELECT * FROM points WHERE answer_id = @aid", conn))
+                                                    {
+                                                        pCmd.Parameters.AddWithValue("@aid", answerId);
+
+                                                        using (SQLiteDataReader pReader = pCmd.ExecuteReader())
+                                                        {
+                                                            while (pReader.Read())
+                                                            {
+                                                                int pointId = Convert.ToInt32(pReader["id"]);
+                                                                string pointType = pReader["point_type"].ToString();
+                                                                int pointValue = pReader["value"] != DBNull.Value ? Convert.ToInt32(pReader["value"]) : 0;
+
+                                                                Points_cods point = new Points_cods(pointId, pointType, pointValue);
+                                                                answer.points_cods.Add(point);
+                                                            }
+                                                        }
+                                                    }
+
+                                                    question.answers.Add(answer);
+                                                }
+                                            }
+                                        }
+
+                                        current_test.questions.Add(question);
+                                    }
+                                }
+                            }
+
+
                             return this.current_test;
                         }
                     }
@@ -204,7 +280,7 @@ namespace PsychoAT
         [STAThread]
         static void Main()
         {
-            db.load_current_test(0);
+            db.load_current_test(2);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
