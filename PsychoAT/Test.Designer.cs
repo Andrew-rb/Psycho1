@@ -39,6 +39,7 @@
             this.Next_question = new Guna.UI2.WinForms.Guna2Button();
             this.Exit = new System.Windows.Forms.Button();
             this.Previous_question_button = new Guna.UI2.WinForms.Guna2Button();
+            this.Count_of_questions = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             this.tableLayoutPanel1.Controls.Add(this.Next_question, 3, 10);
             this.tableLayoutPanel1.Controls.Add(this.Exit, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.Previous_question_button, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.Count_of_questions, 3, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, -18);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -240,6 +242,16 @@
             this.Previous_question_button.Text = "Назад";
             this.Previous_question_button.Click += new System.EventHandler(this.Previous_question_button_Click);
             // 
+            // Count_of_questions
+            // 
+            this.Count_of_questions.AutoSize = true;
+            this.Count_of_questions.Location = new System.Drawing.Point(554, 180);
+            this.Count_of_questions.Name = "Count_of_questions";
+            this.Count_of_questions.Size = new System.Drawing.Size(35, 13);
+            this.Count_of_questions.TabIndex = 42;
+            this.Count_of_questions.Text = "label1";
+            this.Count_of_questions.Click += new System.EventHandler(this.label1_Click);
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,5 +283,6 @@
         private System.Windows.Forms.Button Answer6;
         private System.Windows.Forms.Button Exit;
         private Guna.UI2.WinForms.Guna2Button Previous_question_button;
+        private System.Windows.Forms.Label Count_of_questions;
     }
 }

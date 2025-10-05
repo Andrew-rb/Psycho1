@@ -386,6 +386,9 @@ namespace PsychoAT
         private string[] Array_of_questions_texts;
         private Answer[][] Array_of_answers_to_each_question;
         private int Current_question_on_a_page = 0;
+        private int Number_of_questions;
+        private int[] Selected_answers_array;
+        Dictionary<string, int> point_collector = new Dictionary<string, int>();
 
         public void Set_current_test(Psycho_Test Chosen_test)
         {
@@ -405,7 +408,13 @@ namespace PsychoAT
                 MessageBox.Show("No questions in test!! Check BD!!!!", "BD error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            this.Number_of_questions = size_of_questions_list;
             this.Array_of_questions_texts = new string[size_of_questions_list];
+            this.Selected_answers_array = new int[size_of_questions_list];
+            for (int i = 0; i < size_of_questions_list; i++)
+            {
+                this.Selected_answers_array[i] = -1;
+            }
             short j = 0;
             foreach (Question raw_question in this.Current_test.questions)
             {
@@ -455,6 +464,40 @@ namespace PsychoAT
         public void Go_to_the_previous_question()
         {
             this.Current_question_on_a_page--;
+        }
+        public string Text_for_counter()
+        {
+            return (this.Current_question_on_a_page+1).ToString() + "/" + this.Number_of_questions.ToString();
+        }
+        public int Selected_answer_to_a_current_question()
+        {
+            return this.Selected_answers_array[this.Current_question_on_a_page];
+        }
+        public void Set_answer_button(int button_id)
+        {
+            this.Selected_answers_array[this.Current_question_on_a_page] = button_id;
+        }
+        public void Messege_at_the_end()
+        {
+            for (int i = 0; i < this.Number_of_questions; i++)
+            {
+                Points_cods[] temp = this.Array_of_answers_to_each_question[i][this.Selected_answers_array[i]].points_cods.ToArray();
+                foreach (Points_cods point_code in temp)
+                {
+                    if (this.point_collector.ContainsKey(point_code.type))
+                    {
+                        this.point_collector[point_code.type] += point_code.value;
+                        continue;
+                    }
+                    this.point_collector.Add(point_code.type, point_code.value);
+                }
+            }
+            string text_for_messege = "";
+            foreach (KeyValuePair<string, int> kvp in this.point_collector)
+            {
+                text_for_messege += $"type - {kvp.Key}, value - {kvp.Value}\n";
+            }
+            MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
