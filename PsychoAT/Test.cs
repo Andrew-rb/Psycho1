@@ -13,10 +13,12 @@ namespace PsychoAT
     public partial class Test : Form
     {
         Button[] Array_of_buttons;
+        Logic_of_a_main_test_page Test_page_logic;
         public Test()
         {
             InitializeComponent();
             this.Array_of_buttons = new Button[6] { Answer1, Answer2, Answer3, Answer4, Answer5, Answer6 };
+            this.Test_page_logic = Program.Main_test_page;
         }
 
         private void Test_FormClosed(object sender, FormClosedEventArgs e)
@@ -67,20 +69,21 @@ namespace PsychoAT
 
         private void Previous_question_button_Click(object sender, EventArgs e)
         {
-            Program.Main_test_page.Go_to_the_previous_question();
+            this.Test_page_logic.Go_to_the_previous_question();
             this.Bottom_buttons_logic();
             this.Show_answers_on_page();
         }
 
         private void Next_question_Click(object sender, EventArgs e)
         {
-            if (Program.Main_test_page.Is_it_last_question())
+            if (this.Test_page_logic.Is_it_last_question())
             {
-                Program.Main_test_page.Messege_at_the_end();
-                Application.Exit();
+                this.Test_page_logic.Messege_at_the_end();
+                Program.w_Test_Choice.Show();
+                Program.w_Test.Hide();
                 return;
             }
-            Program.Main_test_page.Go_to_the_next_question();
+            this.Test_page_logic.Go_to_the_next_question();
             this.Bottom_buttons_logic();
             this.Show_answers_on_page();
         }
@@ -88,24 +91,25 @@ namespace PsychoAT
         private void answer_button_logic(int button_id)
         {
             this.Disable_buttons(button_id);
-            Program.Main_test_page.Set_answer_button(button_id);
+            this.Test_page_logic.Set_answer_button(button_id);
         }
         private void Disable_buttons(int button_id)
         {
+            this.Array_of_buttons[button_id].Enabled = false;
             for (int i = 0; i < this.Array_of_buttons.Length; i++)
             {
                 if (i != button_id)
                 {
-                    this.Array_of_buttons[button_id].Enabled = false;
+                    this.Array_of_buttons[i].Enabled = true;
                 }
             }
         }
         private void Show_answers_on_page()
         {
-            this.Count_of_questions.Text = Program.Main_test_page.Text_for_counter();
-            this.Question_title.Text = Program.Main_test_page.Get_question_text();
-            this.Answer_texts(Program.Main_test_page.Get_array_of_answers());
-            int but_id = Program.Main_test_page.Selected_answer_to_a_current_question();
+            this.Count_of_questions.Text = this.Test_page_logic.Text_for_counter();
+            this.Question_title.Text = this.Test_page_logic.Get_question_text();
+            this.Answer_texts(this.Test_page_logic.Get_array_of_answers());
+            int but_id = this.Test_page_logic.Selected_answer_to_a_current_question();
             if (but_id != -1)
             {
                 this.Disable_buttons(but_id);
@@ -133,20 +137,20 @@ namespace PsychoAT
 
         private void Bottom_buttons_logic()
         {
-            if (Program.Main_test_page.Is_it_first_question())
+            if (this.Test_page_logic.Is_it_first_question())
             {
                 this.Previous_question_button.Enabled = false;
                 this.Next_question.Enabled = true;
                 this.Next_question.Text = "Далее";
                 return;
             }
-            else if (Program.Main_test_page.Is_it_last_question())
+            else if (this.Test_page_logic.Is_it_last_question())
             {
                 this.Previous_question_button.Enabled = true;
                 this.Finish_test_button();
                 return;
             }
-            if (Program.Main_test_page.Is_there_only_one_page())
+            if (this.Test_page_logic.Is_there_only_one_page())
             {
                 this.Previous_question_button.Enabled = false;
                 this.Finish_test_button();
