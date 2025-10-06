@@ -124,7 +124,7 @@ namespace PsychoAT
                 this.Array_of_buttons[i].Visible = true;
                 this.Array_of_buttons[i].Enabled = true;
             }
-            if (size_of_answer_array < 6) this.Hide_unused_buttons(size_of_answer_array - 1);
+            if (size_of_answer_array < 6) this.Hide_unused_buttons(size_of_answer_array);
         }
         private void Hide_unused_buttons(int index_from_witch_needs_to_be_hide)
         {
