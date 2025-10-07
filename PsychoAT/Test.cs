@@ -91,6 +91,7 @@ namespace PsychoAT
         private void answer_button_logic(int button_id)
         {
             this.Disable_buttons(button_id);
+            this.Next_question.Enabled = true;
             this.Test_page_logic.Set_answer_button(button_id);
         }
         private void Disable_buttons(int button_id)
@@ -114,6 +115,7 @@ namespace PsychoAT
             {
                 this.Disable_buttons(but_id);
             }
+            this.Bottom_buttons_logic();
         }
         private void Answer_texts(Answer[] array_of_answerss)
         {
@@ -140,7 +142,9 @@ namespace PsychoAT
             if (this.Test_page_logic.Is_it_first_question())
             {
                 this.Previous_question_button.Enabled = false;
-                this.Next_question.Enabled = true;
+                this.Next_question.Enabled = false;
+                if (this.Test_page_logic.Selected_answer_to_a_current_question() != -1)
+                    this.Next_question.Enabled = true;
                 this.Next_question.Text = "Далее";
                 return;
             }
@@ -157,14 +161,21 @@ namespace PsychoAT
                 return;
             }
             this.Previous_question_button.Enabled = true;
-            this.Next_question.Enabled = true;
+            this.Next_question.Enabled = false;
+            if(this.Test_page_logic.Selected_answer_to_a_current_question() != -1)
+                this.Next_question.Enabled = true;
             this.Next_question.Text = "Далее";
         }
 
         private void Finish_test_button()
         {
-            this.Next_question.Enabled = true;
+            this.Next_question.Enabled = false;
             this.Next_question.Text = "Закончить";
+            if (this.Test_page_logic.Selected_answer_to_a_current_question() != -1)
+            {
+                this.Next_question.Enabled = true;
+            }
+
         }
         private void Exit_Click(object sender, EventArgs e)
         {
