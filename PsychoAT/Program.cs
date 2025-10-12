@@ -537,6 +537,31 @@ namespace PsychoAT
             }
             MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private int check_condition(Dictionary<string, object> points, string expression)
+        {
+            try
+            {
+                Expression expr = new Expression(expression);
+                foreach (var kv in points)
+                {
+                    expr.Parameters[kv.Key] = kv.Value;
+                }
+                object result = expr.Evaluate();
+                if (result is bool b) // result возвращается как object
+                {
+                    return b ? 1 : 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+        }
     }
 
 }
