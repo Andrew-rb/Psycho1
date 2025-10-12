@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PsychoAT;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using NCalc;
 using static System.Net.WebRequestMethods;
 
 namespace PsychoAT
@@ -140,6 +142,7 @@ namespace PsychoAT
                 }
             }
         }
+        
         public Psycho_Test load_current_test(int id)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -295,10 +298,6 @@ namespace PsychoAT
             this.load_all_tests();
         }
     }
-
-
-
-
 
     internal static class Program
     {
@@ -545,6 +544,31 @@ namespace PsychoAT
                     this.Current_test = null;
                     break;
                 }
+            }
+        }
+
+        private int check_condition(Dictionary<string, object> points, string expression)
+        {
+            try
+            {
+                Expression expr = new Expression(expression);
+                foreach (var kv in points)
+                {
+                    expr.Parameters[kv.Key] = kv.Value;
+                }
+                object result = expr.Evaluate();
+                if (result is bool b) // result возвращается как object
+                {
+                    return b ? 1 : 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return -1;
             }
         }
     }
