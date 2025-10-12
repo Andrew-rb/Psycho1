@@ -282,7 +282,7 @@ namespace PsychoAT
                                 condition = condition,
                                 result = resultText
                             };
-                            MessageBox.Show(res.condition);
+                            //MessageBox.Show(res.condition);
                             resultsList.Add(res);
                         }
                     }
@@ -515,7 +515,7 @@ namespace PsychoAT
         {
             this.Selected_answers_array[this.Current_question_on_a_page] = button_id;
         }
-        public void Messege_at_the_end()
+        public void Results()
         {
             for (int i = 0; i < this.Number_of_questions; i++)
             {
@@ -530,20 +530,49 @@ namespace PsychoAT
                     this.point_collector.Add(point_code.type, point_code.value);
                 }
             }
-            string text_for_messege = "";
-            foreach (KeyValuePair<string, int> kvp in this.point_collector)
+            bool alreafy = false;
+            Results[] array_of_a_resaults = this.db.get_results(this.Current_test.id);
+            string text = "";
+            foreach (var vk in this.point_collector)
             {
-                text_for_messege += $"type - {kvp.Key}, value - {kvp.Value}\n";
+                text += vk.Key.ToString() + vk.Value.ToString();
             }
-            MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(text, "dadsad", MessageBoxButtons.OK);
+            foreach(Results result in array_of_a_resaults)
+            {
+                if (alreafy) 
+                    break;
+               switch (this.check_condition(result.condition))
+               {
+                    case -1:
+                        MessageBox.Show("Invalid condition, check BD!!!", "Condition failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                        break;
+                    case 0:
+                        break;
+                    case 1:
+                        Program.w_Result.Set_resault(result);
+                        alreafy = true;
+                        break;
+                    default:
+                        break;
+
+               }
+            }
+            this.point_collector = new Dictionary<string, int>();
+            this.Selected_answers_array = null;
+            this.Current_question_on_a_page = 0;
+            this.Array_of_answers_to_each_question = null;
+            this.Array_of_questions_texts = null;
+            this.Current_test = null;
         }
 
-        private int check_condition(Dictionary<string, object> points, string expression)
+        private int check_condition(string expression)
         {
             try
             {
                 Expression expr = new Expression(expression);
-                foreach (var kv in points)
+                foreach (var kv in this.point_collector)
                 {
                     expr.Parameters[kv.Key] = kv.Value;
                 }
