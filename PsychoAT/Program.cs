@@ -516,7 +516,7 @@ namespace PsychoAT
         {
             this.Selected_answers_array[this.Current_question_on_a_page] = button_id;
         }
-        public void Messege_at_the_end()
+        public void Results()
         {
             for (int i = 0; i < this.Number_of_questions; i++)
             {
@@ -531,12 +531,21 @@ namespace PsychoAT
                     this.point_collector.Add(point_code.type, point_code.value);
                 }
             }
-            string text_for_messege = "";
-            foreach (KeyValuePair<string, int> kvp in this.point_collector)
+            Results[] array_of_a_resaults = this.db.get_results(this.Current_test.id);
+            foreach(Results result in array_of_a_resaults)
             {
-                text_for_messege += $"type - {kvp.Key}, value - {kvp.Value}\n";
+                if (true)
+                {
+                    Program.w_Result.Set_resault(result);
+                    this.point_collector = new Dictionary<string, int>();
+                    this.Selected_answers_array = null;
+                    this.Current_question_on_a_page = 0;
+                    this.Array_of_answers_to_each_question = null;
+                    this.Array_of_questions_texts = null;
+                    this.Current_test = null;
+                    break;
+                }
             }
-            MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 

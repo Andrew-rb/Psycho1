@@ -12,6 +12,7 @@ namespace PsychoAT
 {
     public partial class Result : Form
     {
+        private Results resault;
         public Result()
         {
             InitializeComponent();
@@ -19,13 +20,24 @@ namespace PsychoAT
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            
-
+            Program.w_Result.Hide();
+            Program.w_Test_Choice.Show();
         }
 
         private void Result_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Internal_set_result_for_text(Results resault)
+        {
+            this.resault= resault;
+            this.Resault_text.Text = this.resault.result;
+        }
+
+        public void Set_resault(Results resault)
+        {
+            this.Internal_set_result_for_text(resault);
         }
     }
 }
