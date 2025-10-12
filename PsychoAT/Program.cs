@@ -532,6 +532,12 @@ namespace PsychoAT
             }
             bool alreafy = false;
             Results[] array_of_a_resaults = this.db.get_results(this.Current_test.id);
+            string text = "";
+            foreach (var vk in this.point_collector)
+            {
+                text += vk.Key.ToString() + vk.Value.ToString();
+            }
+            MessageBox.Show(text, "dadsad", MessageBoxButtons.OK);
             foreach(Results result in array_of_a_resaults)
             {
                 if (alreafy) 
@@ -551,7 +557,7 @@ namespace PsychoAT
                     default:
                         break;
 
-                }
+               }
             }
             this.point_collector = new Dictionary<string, int>();
             this.Selected_answers_array = null;
