@@ -78,7 +78,7 @@ namespace PsychoAT
         {
             if (this.Test_page_logic.Is_it_last_question())
             {
-                this.Test_page_logic.Messege_at_the_end();
+                this.Test_page_logic.Results();
                 Program.w_Test_Choice.Show();
                 Program.w_Test.Hide();
                 return;
