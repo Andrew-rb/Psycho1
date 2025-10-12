@@ -11,6 +11,11 @@ using static System.Net.WebRequestMethods;
 
 namespace PsychoAT
 {
+    public class Results
+    {
+        public string condition = "";
+        public string result = "";
+    }
 
     /*Классы для хранения тестов*/
 
@@ -87,6 +92,7 @@ namespace PsychoAT
     /*Классы и методы загрузки тестов из БД*/
     public class DB_work
     {
+
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
@@ -248,6 +254,41 @@ namespace PsychoAT
             MessageBox.Show(output);
         }
 
+        public Results[] get_results(int test_id)
+        {
+            List<Results> resultsList = new List<Results>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "SELECT condition, result_text FROM results WHERE test_id = @tid";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tid", test_id);
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string condition = reader["condition"] != DBNull.Value ? reader["condition"].ToString() : "";
+                            string resultText = reader["result_text"] != DBNull.Value ? reader["result_text"].ToString() : "";
+
+                            Results res = new Results
+                            {
+                                condition = condition,
+                                result = resultText
+                            };
+                            MessageBox.Show(res.condition);
+                            resultsList.Add(res);
+                        }
+                    }
+                }
+            }
+
+            return resultsList.ToArray();
+        }
+
         public DB_work()
         {
             init_db_path();
@@ -290,8 +331,6 @@ namespace PsychoAT
             w_Test_Start = new Test_Start();
             w_Result = new Result();
             w_Stat = new Statistics();
-
-
             Application.Run(w_Start);
 
 
@@ -500,4 +539,5 @@ namespace PsychoAT
             MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 }
