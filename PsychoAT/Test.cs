@@ -28,9 +28,12 @@ namespace PsychoAT
 
         private void Test_Load(object sender, EventArgs e)
         {
-            this.Show_answers_on_page();
         }
 
+        public void Start_of_the_test()
+        {
+            this.Show_answers_on_page();
+        }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -79,7 +82,7 @@ namespace PsychoAT
             if (this.Test_page_logic.Is_it_last_question())
             {
                 this.Test_page_logic.Results();
-                Program.w_Test_Choice.Show();
+                Program.w_Result.Show();
                 Program.w_Test.Hide();
                 return;
             }
