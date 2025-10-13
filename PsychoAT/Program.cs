@@ -109,7 +109,7 @@ namespace PsychoAT
         private void init_db_path()
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            dbPath = Path.Combine(baseDir, @"..\..\tests.db");
+            dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
             connectionString = $"Data Source={dbPath};Version={version};";
             MessageBox.Show(connectionString);
         }
