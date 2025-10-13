@@ -71,6 +71,7 @@ namespace PsychoAT
         {
             Program.w_Test_Start.Hide();
             Program.w_Test.Show();
+            Program.w_Test.Start_of_the_test();
         }
 
         private void Test_Start_FormClosed(object sender, FormClosedEventArgs e)
