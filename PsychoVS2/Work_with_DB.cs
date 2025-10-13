@@ -78,6 +78,12 @@ namespace PsychoVS2
         public int value;
     }
 
+    public class Results
+    {
+        public string condition = "";
+        public string result = "";
+    }
+
 
 
     /*Базовые установки
