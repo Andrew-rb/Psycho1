@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Antlr.Runtime.Tree;
+using System.Windows;
 
 namespace PsychoVS2.Windows
 {
@@ -7,9 +8,15 @@ namespace PsychoVS2.Windows
     /// </summary>
     public partial class Test_Start : Window
     {
-        public Test_Start()
+
+        private Psycho_Test choosen_one;
+
+        public Test_Start(Psycho_Test choosen_test)
         {
+            this.choosen_one = choosen_test;
             InitializeComponent();
+            this.Time_button.Content += "123 минуты" /*this.choosen_one.time*/;
+            this.Quastion_quantity.Content += this.choosen_one.amm_of_questions.ToString() + " Вопросв";
             WindowState = WindowState.Maximized;
         }
 
@@ -23,7 +30,7 @@ namespace PsychoVS2.Windows
         private void StartTestButton_Click(object sender, RoutedEventArgs e)
         {
             
-            Test Test = new Test();
+            Test Test = new Test(this.choosen_one);
             Test.Show();
             this.Close();
             
