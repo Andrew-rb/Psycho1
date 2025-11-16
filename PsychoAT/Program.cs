@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PsychoAT;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -7,10 +8,16 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using NCalc;
 using static System.Net.WebRequestMethods;
 
 namespace PsychoAT
 {
+    public class Results
+    {
+        public string condition = "";
+        public string result = "";
+    }
 
     /*Классы для хранения тестов*/
 
@@ -88,6 +95,7 @@ namespace PsychoAT
     public class DB_work
     {
 
+
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
 
@@ -100,7 +108,7 @@ namespace PsychoAT
         private void init_db_path()
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            dbPath = Path.Combine(baseDir, @"..\..\tests.db");
+            dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
             connectionString = $"Data Source={dbPath};Version={version};";
             MessageBox.Show(connectionString);
         }
@@ -134,6 +142,7 @@ namespace PsychoAT
                 }
             }
         }
+        
         public Psycho_Test load_current_test(int id)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -248,16 +257,47 @@ namespace PsychoAT
             MessageBox.Show(output);
         }
 
+        public Results[] get_results(int test_id)
+        {
+            List<Results> resultsList = new List<Results>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "SELECT condition, result_text FROM results WHERE test_id = @tid";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tid", test_id);
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string condition = reader["condition"] != DBNull.Value ? reader["condition"].ToString() : "";
+                            string resultText = reader["result_text"] != DBNull.Value ? reader["result_text"].ToString() : "";
+
+                            Results res = new Results
+                            {
+                                condition = condition,
+                                result = resultText
+                            };
+                            //MessageBox.Show(res.condition);
+                            resultsList.Add(res);
+                        }
+                    }
+                }
+            }
+
+            return resultsList.ToArray();
+        }
+
         public DB_work()
         {
             init_db_path();
             this.load_all_tests();
         }
     }
-
-
-
-
 
     internal static class Program
     {
@@ -290,8 +330,6 @@ namespace PsychoAT
             w_Test_Start = new Test_Start();
             w_Result = new Result();
             w_Stat = new Statistics();
-
-
             Application.Run(w_Start);
 
 
@@ -329,7 +367,7 @@ namespace PsychoAT
                     this.Array_of_tests_divided_by_pages[i][j] = test;
                     j++;
                 }
-                else { i++; j = 0; }
+                else { i++; j = 1; this.Array_of_tests_divided_by_pages[i][0] = test; }
             }
         }
 
@@ -428,6 +466,23 @@ namespace PsychoAT
                 this.Array_of_answers_to_each_question[j] = a.answers.ToArray();
                 j++;
             }
+            Program.w_Test_Choice.Hide();
+            Program.w_Test_Start.Show();
+            Task.Run(() => this.fill_dictionary(this.Array_of_answers_to_each_question));
+        }
+        private void fill_dictionary(Answer[][] Array_of_answers_to_each_question)
+        {
+            for (int i = 0; i < Array_of_answers_to_each_question.Length; i++)
+            {
+                for (int j = 0; j < Array_of_answers_to_each_question[i].Length; j++)
+                {
+                    foreach(Points_cods a in Array_of_answers_to_each_question[i][j].points_cods)
+                    {
+                        if (!this.point_collector.ContainsKey(a.type))
+                            this.point_collector.Add(a.type, 0);
+                    }
+                }
+            }
         }
         public Answer[] Get_array_of_answers()
         {
@@ -477,7 +532,7 @@ namespace PsychoAT
         {
             this.Selected_answers_array[this.Current_question_on_a_page] = button_id;
         }
-        public void Messege_at_the_end()
+        public void Results()
         {
             for (int i = 0; i < this.Number_of_questions; i++)
             {
@@ -492,12 +547,67 @@ namespace PsychoAT
                     this.point_collector.Add(point_code.type, point_code.value);
                 }
             }
-            string text_for_messege = "";
-            foreach (KeyValuePair<string, int> kvp in this.point_collector)
+            bool alreafy = false;
+            Results[] array_of_a_resaults = this.db.get_results(this.Current_test.id);
+            string text = "";
+            foreach (var vk in this.point_collector)
             {
-                text_for_messege += $"type - {kvp.Key}, value - {kvp.Value}\n";
+                text += vk.Key.ToString() + vk.Value.ToString();
             }
-            MessageBox.Show(text_for_messege, "resaults", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(text, "dadsad", MessageBoxButtons.OK);
+            foreach(Results result in array_of_a_resaults)
+            {
+                if (alreafy) 
+                    break;
+               switch (this.check_condition(result.condition))
+               {
+                    case -1:
+                        MessageBox.Show("Invalid condition, check BD!!!", "Condition failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                        break;
+                    case 0:
+                        break;
+                    case 1:
+                        Program.w_Result.Set_resault(result);
+                        alreafy = true;
+                        break;
+                    default:
+                        break;
+
+               }
+            }
+            this.point_collector = new Dictionary<string, int>();
+            this.Selected_answers_array = null;
+            this.Current_question_on_a_page = 0;
+            this.Array_of_answers_to_each_question = null;
+            this.Array_of_questions_texts = null;
+            this.Current_test = null;
+        }
+
+        private int check_condition(string expression)
+        {
+            try
+            {
+                Expression expr = new Expression(expression);
+                foreach (var kv in this.point_collector)
+                {
+                    expr.Parameters[kv.Key] = kv.Value;
+                }
+                object result = expr.Evaluate();
+                if (result is bool b) // result возвращается как object
+                {
+                    return b ? 1 : 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return -1;
+            }
         }
     }
+
 }

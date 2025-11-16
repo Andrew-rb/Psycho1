@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.Exit_button = new Guna.UI2.WinForms.Guna2Button();
+            this.Resault_text = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,8 +42,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.15195F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.9240246F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Button1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.guna2Button3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.guna2Button2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Exit_button, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.Resault_text, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(-6, 1);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -75,43 +75,44 @@
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "Результаты";
             // 
-            // guna2Button3
+            // Exit_button
             // 
-            this.guna2Button3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.guna2Button3.Animated = true;
-            this.guna2Button3.BorderRadius = 10;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(574, 470);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(148, 75);
-            this.guna2Button3.TabIndex = 5;
-            this.guna2Button3.Text = "Выход";
-            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            this.Exit_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Exit_button.Animated = true;
+            this.Exit_button.BorderRadius = 10;
+            this.Exit_button.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Exit_button.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Exit_button.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Exit_button.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Exit_button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
+            this.Exit_button.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Exit_button.ForeColor = System.Drawing.Color.White;
+            this.Exit_button.Location = new System.Drawing.Point(574, 470);
+            this.Exit_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Exit_button.Name = "Exit_button";
+            this.Exit_button.Size = new System.Drawing.Size(148, 75);
+            this.Exit_button.TabIndex = 5;
+            this.Exit_button.Text = "Выход";
+            this.Exit_button.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
-            // guna2Button2
+            // Resault_text
             // 
-            this.guna2Button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Button2.BorderRadius = 20;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(73, 168);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(583, 240);
-            this.guna2Button2.TabIndex = 4;
-            this.guna2Button2.Text = "Вывод результатов";
+            this.Resault_text.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Resault_text.BorderRadius = 20;
+            this.Resault_text.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Resault_text.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Resault_text.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Resault_text.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Resault_text.Enabled = false;
+            this.Resault_text.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
+            this.Resault_text.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Resault_text.ForeColor = System.Drawing.Color.White;
+            this.Resault_text.Location = new System.Drawing.Point(73, 168);
+            this.Resault_text.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Resault_text.Name = "Resault_text";
+            this.Resault_text.Size = new System.Drawing.Size(583, 240);
+            this.Resault_text.TabIndex = 4;
+            this.Resault_text.Text = "Вывод результатов";
             // 
             // Result
             // 
@@ -133,7 +134,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button Exit_button;
+        private Guna.UI2.WinForms.Guna2Button Resault_text;
     }
 }
