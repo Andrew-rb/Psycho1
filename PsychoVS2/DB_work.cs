@@ -140,7 +140,7 @@ namespace PsychoVS2
     //****************WORK WITH DB*******************************************
     public class DB_work
     {
-
+        public int number_of_pages;
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
@@ -233,6 +233,7 @@ namespace PsychoVS2
                             tests[tests.Count - 1].amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
                         }
                     }
+                    this.number_of_pages = this.tests.Count / 8;
                 }
             }
         }

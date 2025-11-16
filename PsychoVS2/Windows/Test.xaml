@@ -324,7 +324,8 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- Номер вопроса -->
-                    <Label Content="Вопрос 1 из 25" 
+                    <Label x:Name="Answer_counter"
+                           Content="Вопрос 1 из 25" 
                            FontSize="18" 
                            FontWeight="Bold" 
                            Foreground="#FFFCCC3C"
@@ -355,7 +356,8 @@
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,50,0,0">
                 <StackPanel>
                     <!-- Вопрос -->
-                    <TextBlock Text="Как вы обычно реагируете на неожиданные изменения в планах?" 
+                    <TextBlock x:Name="Question"
+                           Text="Как вы обычно реагируете на неожиданные изменения в планах?" 
                            FontSize="24" 
                            FontWeight="Bold" 
                            Foreground="White"
@@ -378,17 +380,17 @@
                             <Style TargetType="Button" BasedOn="{StaticResource AnswerButtonStyle}"/>
                         </ItemsControl.Resources>
 
-                        <Button Content="Принимаю их спокойно и адаптируюсь" 
+                        <Button x:Name="answer_1" Tag="1" Content="Принимаю их спокойно и адаптируюсь" 
                                 Click="AnswerButton_Click"/>
-                        <Button Content="Чувствую раздражение и сопротивление" 
+                        <Button x:Name="answer_2" Tag="2"  Content="Чувствую раздражение и сопротивление" 
                                 Click="AnswerButton_Click"/>
-                        <Button Content="Начинаю активно искать новые решения" 
+                        <Button x:Name="answer_3" Tag="3" Content="Начинаю активно искать новые решения" 
                                 Click="AnswerButton_Click"/>
-                        <Button Content="Ощущаю тревогу и беспокойство" 
+                        <Button x:Name="answer_4" Tag="4" Content="Ощущаю тревогу и беспокойство" 
                                 Click="AnswerButton_Click"/>
-                        <Button Content="Вижу в этом новые возможности" 
+                        <Button x:Name="answer_5" Tag="5" Content="Вижу в этом новые возможности" 
                                 Click="AnswerButton_Click"/>
-                        <Button Content="Стараюсь вернуть всё как было" 
+                        <Button x:Name="answer_6" Tag="6" Content="Стараюсь вернуть всё как было" 
                                 Click="AnswerButton_Click"/>
                     </ItemsControl>
                 </StackPanel>
@@ -414,8 +416,8 @@
                     <!-- Кнопка назад -->
                     <Button 
                             Style="{StaticResource BackButtonStyle}"
-                            Margin="0,-16,20,0"
-                            Click="BackButton_Click" Grid.Column="1"/>
+                            Margin="0,0,20,0"
+                            Click="BackButton_Click" Grid.Column="1" Height="45" VerticalAlignment="Bottom"/>
 
                     <!-- Кнопка далее -->
                     <Button Grid.Column="2" 

@@ -461,10 +461,10 @@
                 <!-- Информация о тесте -->
                 <StackPanel Orientation="Vertical" Margin="0,40,0,20">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="⏱ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
-                        <Button Content="❓ 25 вопросов" Style="{StaticResource InfoButtonStyle}" Width="156"/>
+                        <Button x:Name="Time_button" Content="⏱ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
+                        <Button x:Name="Quastion_quantity" Content="❓ 25 вопросов" Style="{StaticResource InfoButtonStyle}" Width="156"/>
                     </StackPanel>
-                    <Button Content="🧠 Психологический тест" 
+                    <Button x:Name="Test_type" Content="🧠 Психологический тест" 
                 Style="{StaticResource InfoButtonStyle}" 
                 HorizontalAlignment="Left"
                 Margin="4,2,0,0" Width="244"/>
@@ -478,7 +478,7 @@
            Margin="0,0,0,10"/>
 
                         <!-- Автор 1 -->
-                        <Label Content="🧠 Иванов Александр Сергеевич"
+                        <Label x:Name="Author_label_1" Content="🧠 Иванов Александр Сергеевич"
            FontSize="14"
            FontWeight="SemiBold"
            Foreground="#FFF5F5F5"
@@ -494,7 +494,7 @@
                         </Label>
 
                         <!-- Автор 2 -->
-                        <Label Content="🧠 Петрова Мария Алексеевна"
+                        <Label x:Name="Author_label_2" Content="🧠 Петрова Мария Алексеевна"
            FontSize="14"
            FontWeight="SemiBold"
            Foreground="#FFF5F5F5"
@@ -510,7 +510,7 @@
                         </Label>
 
                         <!-- Автор 3 -->
-                        <Label Content="🧠 Смирнов Дмитрий Викторович"
+                        <Label x:Name="Author_label_3" Content="🧠 Смирнов Дмитрий Викторович"
            FontSize="14"
            FontWeight="SemiBold"
            Foreground="#FFF5F5F5"
@@ -526,7 +526,7 @@
                         </Label>
 
                         <!-- Автор 4 -->
-                        <Label Content="🧠 Кузнецова Елена Владимировна"
+                        <Label x:Name="Author_label_4" Content="🧠 Кузнецова Елена Владимировна"
            FontSize="14"
            FontWeight="SemiBold"
            Foreground="#FFF5F5F5"
