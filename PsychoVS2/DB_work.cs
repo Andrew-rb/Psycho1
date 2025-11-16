@@ -210,6 +210,7 @@ namespace PsychoVS2
                         string title = reader["title"].ToString();
                         string type = reader["type"].ToString();
                         string author = reader["author"].ToString();
+                        string description = reader["description"].ToString();
 
                         // Загружаем картинку из таблицы images
                         byte[] image = null;
@@ -224,7 +225,7 @@ namespace PsychoVS2
                         }
 
 
-                        tests.Add(new Psycho_Test(testId, title, type, author, null, image));
+                        tests.Add(new Psycho_Test(testId, title, type, author, null, image, description));
 
                         using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
                         {
@@ -254,6 +255,7 @@ namespace PsychoVS2
                             string title = reader["title"].ToString();
                             string type = reader["type"].ToString();
                             string author = reader["author"].ToString();
+                            string description = reader["description"].ToString();
 
 
                             // Загружаем картинку из таблицы images
@@ -269,7 +271,7 @@ namespace PsychoVS2
                             }
 
 
-                            current_test = new Psycho_Test(testId, title, type, author, null, image);
+                            current_test = new Psycho_Test(testId, title, type, author, null, image, description);
 
                             using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
                             {
