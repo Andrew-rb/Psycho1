@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using NCalc;
+﻿using NCalc;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -75,6 +74,7 @@ namespace PsychoVS2
         public string type;
         public string author;
         public int amm_of_questions = 0;
+        public int estemated_time = 0;
 
         public List<Question> questions;
         public BitmapImage image;
