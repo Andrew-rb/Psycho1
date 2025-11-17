@@ -1,5 +1,7 @@
 ﻿using Antlr.Runtime.Tree;
+using System.Reflection.Emit;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PsychoVS2.Windows
 {
@@ -10,14 +12,35 @@ namespace PsychoVS2.Windows
     {
 
         private Psycho_Test choosen_one;
+        private System.Windows.Controls.Label[] Author_labels;
 
         public Test_Start(Psycho_Test choosen_test)
         {
             this.choosen_one = choosen_test;
             InitializeComponent();
-            this.Time_button.Content += "123 минуты" /*this.choosen_one.time*/;
-            this.Quastion_quantity.Content += this.choosen_one.amm_of_questions.ToString() + " Вопросв";
             WindowState = WindowState.Maximized;
+            this.Author_labels = new System.Windows.Controls.Label[] { this.Author_label_1, this.Author_label_2, this.Author_label_3, this.Author_label_4 };
+            this.Show_test_properties();
+        }
+
+        private void Show_test_properties()
+        {
+            this.Time_button.Content = "123 минуты" /*this.choosen_one.time*/;
+            this.Quastion_quantity.Content = this.choosen_one.amm_of_questions.ToString() + " Вопросв";
+            this.Test_type.Content = this.choosen_one.type;
+            this.Name_label.Content = this.choosen_one.name;
+            this.Description_label.Content = this.choosen_one.description;
+            string[] Authors = new string[4];
+            this.choosen_one.author.Split('|').CopyTo(Authors,0);
+            for (int i = 0; i < 4; i++)
+            {
+                if (Authors[i] != null)
+                {
+                    this.Author_labels[i].Content = Authors[i];
+                }
+                else 
+                    this.Author_labels[i].Visibility = Visibility.Hidden;
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -29,10 +52,19 @@ namespace PsychoVS2.Windows
 
         private void StartTestButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            Test Test = new Test(this.choosen_one);
-            Test.Show();
-            this.Close();
+            if (this.choosen_one.amm_of_questions != 0)
+            {
+                Test Test = new Test(this.choosen_one);
+                Test.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("In this test questions don`t exit. Stupid BD!!!", "0 questions", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Test_choice testChoiceWindow = new Test_choice();
+                testChoiceWindow.Show();
+                this.Close();
+            }
             
         }
 

@@ -36,18 +36,22 @@ namespace PsychoVS2.Windows
         private Label[] Type_of_test_labels;
         private Label[] Estemated_timr_labels;
         private Image[] Images;
-        private Psycho_Test[] tests = new Psycho_Test[db.number_of_pages*8];
+        private Psycho_Test[] tests;
         private Button[] Cards;
         private int current_page_numb = 1;
 
         public static DB_work db = new DB_work();
         public Test_choice()
         {
-            db.load_all_tests();
             InitializeComponent();
+            WindowState = WindowState.Maximized;
+        }
+
+        private async Task init_for_arrays()
+        {
             this.Authors_labels = new Label[8] { Card_1.Template.FindName("Card_1_LabelAuthor", Card_1) as Label, Card_2.Template.FindName("Card_2_LabelAuthor", Card_2) as Label,
                 Card_3.Template.FindName("Card_3_LabelAuthor", Card_3) as Label, Card_4.Template.FindName("Card_4_LabelAuthor", Card_4) as Label,
-                Card_5.Template.FindName("Card_5_LabelAuthor", Card_5) as Label, Card_6.Template.FindName("Card_6_LabelAuthor", Card_6) as Label, 
+                Card_5.Template.FindName("Card_5_LabelAuthor", Card_5) as Label, Card_6.Template.FindName("Card_6_LabelAuthor", Card_6) as Label,
                 Card_7.Template.FindName("Card_7_LabelAuthor", Card_7) as Label, Card_8.Template.FindName("Card_8_LabelAuthor", Card_8) as Label };
             this.Descriptions_labels = new Label[8] { Card_1.Template.FindName("Card_1_LabelDescription", Card_1) as Label, Card_2.Template.FindName("Card_2_LabelDescription", Card_2) as Label,
                 Card_3.Template.FindName("Card_3_LabelDescription", Card_3) as Label, Card_4.Template.FindName("Card_4_LabelDescription", Card_4) as Label,
@@ -65,7 +69,7 @@ namespace PsychoVS2.Windows
                 Card_3.Template.FindName("Card_3_LabelTypeTest", Card_3) as Label, Card_4.Template.FindName("Card_4_LabelTypeTest", Card_4) as Label,
                 Card_5.Template.FindName("Card_5_LabelTypeTest", Card_5) as Label, Card_6.Template.FindName("Card_6_LabelTypeTest", Card_6) as Label,
                 Card_7.Template.FindName("Card_7_LabelTypeTest", Card_7) as Label, Card_8.Template.FindName("Card_8_LabelTypeTest", Card_8) as Label };
-            this.Estemated_timr_labels= new Label[8] { Card_1.Template.FindName("Card_1_LabelTime", Card_1) as Label, Card_2.Template.FindName("Card_2_LabelTime", Card_2) as Label,
+            this.Estemated_timr_labels = new Label[8] { Card_1.Template.FindName("Card_1_LabelTime", Card_1) as Label, Card_2.Template.FindName("Card_2_LabelTime", Card_2) as Label,
                 Card_3.Template.FindName("Card_3_LabelTime", Card_3) as Label, Card_4.Template.FindName("Card_4_LabelTime", Card_4) as Label,
                 Card_5.Template.FindName("Card_5_LabelTime", Card_5) as Label, Card_6.Template.FindName("Card_6_LabelTime", Card_6) as Label,
                 Card_7.Template.FindName("Card_7_LabelTime", Card_7) as Label, Card_8.Template.FindName("Card_8_LabelTime", Card_8) as Label };
@@ -74,22 +78,16 @@ namespace PsychoVS2.Windows
                 Card_5.Template.FindName("Card_5_Image", Card_5) as Image, Card_6.Template.FindName("Card_6_Image", Card_6) as Image,
                 Card_7.Template.FindName("Card_7_Image", Card_7) as Image, Card_8.Template.FindName("Card_8_Image", Card_8) as Image };
             this.Cards = new Button[8] { Card_1, Card_2, Card_3, Card_4, Card_5, Card_6, Card_7, Card_8 };
-            db.tests.CopyTo(this.tests);
-            this.Show_test_on_page();
-            WindowState = WindowState.Maximized;
-            
-
+            for (int i = 0; i < 8; i++)
+            {
+                this.Cards[i].Tag = i;
+            }
+            this.tests = db.tests.ToArray();
         }
-
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void AnswerButton_Click(object sender, RoutedEventArgs e)
@@ -100,11 +98,7 @@ namespace PsychoVS2.Windows
             this.Close();
         }
 
-        private void Button_One_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var img = Card_2.Template.FindName("Card_2_Image", Card_2) as Image;
             if (img != null)
@@ -112,12 +106,13 @@ namespace PsychoVS2.Windows
                 img.Source = db.current_test.image;
                 MessageBox.Show("loaded");
             }
+            await this.init_for_arrays();
+            this.Show_test_on_page();
         }
 
         private void Show_test_on_page()
         {
-            int last_Test = current_page_numb * 8;
-            for (int i = (current_page_numb - 1) * 8; i < last_Test; i++)
+            for (int i = 0; i < this.tests.Length; i++)
             {
                 if (this.tests[i] != null)
                 {

@@ -380,17 +380,17 @@
                             <Style TargetType="Button" BasedOn="{StaticResource AnswerButtonStyle}"/>
                         </ItemsControl.Resources>
 
-                        <Button x:Name="answer_1" Tag="1" Content="Принимаю их спокойно и адаптируюсь" 
+                        <Button x:Name="answer_1" Content="Принимаю их спокойно и адаптируюсь" 
                                 Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_2" Tag="2"  Content="Чувствую раздражение и сопротивление" 
+                        <Button x:Name="answer_2" Content="Чувствую раздражение и сопротивление" 
                                 Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_3" Tag="3" Content="Начинаю активно искать новые решения" 
+                        <Button x:Name="answer_3" Content="Начинаю активно искать новые решения" 
                                 Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_4" Tag="4" Content="Ощущаю тревогу и беспокойство" 
+                        <Button x:Name="answer_4" Content="Ощущаю тревогу и беспокойство" 
                                 Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_5" Tag="5" Content="Вижу в этом новые возможности" 
+                        <Button x:Name="answer_5" Content="Вижу в этом новые возможности" 
                                 Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_6" Tag="6" Content="Стараюсь вернуть всё как было" 
+                        <Button x:Name="answer_6" Content="Стараюсь вернуть всё как было" 
                                 Click="AnswerButton_Click"/>
                     </ItemsControl>
                 </StackPanel>
