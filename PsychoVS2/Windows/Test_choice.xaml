@@ -18,7 +18,7 @@
         <Canvas>
 
             <!-- КНОПКА 1  -->
-            <Button x:Name="Card_1" Width="349" Height="448" 
+            <Button Tag="1" x:Name="Card_1" Width="349" Height="448" 
                     Canvas.Left="40" Canvas.Top="42"
                     Click="Button_One_Click" Background="White" Foreground="#FF3A454B"
                     FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -190,7 +190,7 @@
               VerticalAlignment="Center"/>
 
                                     <!-- Автор 1 -->
-                                    <Label x:Name="Card_1_LabelAuthor1" Content="Иванов И.И."
+                                    <Label x:Name="Card_1_LabelAuthor" Content="Иванов И.И."
                FontSize="11"
                FontWeight="Medium"
                Foreground="White"
@@ -198,61 +198,19 @@
                VerticalAlignment="Center"
                Padding="2,0"
                Background="Transparent" 
-               BorderThickness="0"/>
+               BorderThickness="0" Width="303"/>
 
                                     <!-- Вертикальная линия разделитель -->
-                                    <Rectangle Width="1" 
-                   Height="12" 
-                   Fill="#FFB6B6B6" 
-                   Margin="4,0" 
-                   VerticalAlignment="Center"/>
 
                                     <!-- Автор 2 -->
-                                    <Label x:Name="Card_1_LabelAuthor2" Content="Петров П.П."
-               FontSize="11"
-               FontWeight="Medium"
-               Foreground="White"
-               FontFamily="Montserrat"
-               VerticalAlignment="Center"
-               Padding="2,0"
-               Background="Transparent" 
-               BorderThickness="0"/>
 
                                     <!-- Вертикальная линия разделитель -->
-                                    <Rectangle Width="1" 
-                   Height="12" 
-                   Fill="#FFB6B6B6" 
-                   Margin="4,0" 
-                   VerticalAlignment="Center"/>
 
                                     <!-- Автор 3 -->
-                                    <Label x:Name="Card_1_LabelAuthor3" Content="Сидоров С.С."
-               FontSize="11"
-               FontWeight="Medium"
-               Foreground="White"
-               FontFamily="Montserrat"
-               VerticalAlignment="Center"
-               Padding="2,0"
-               Background="Transparent" 
-               BorderThickness="0"/>
 
                                     <!-- Вертикальная линия разделитель -->
-                                    <Rectangle Width="1" 
-                   Height="12" 
-                   Fill="#FFB6B6B6" 
-                   Margin="4,0" 
-                   VerticalAlignment="Center"/>
 
                                     <!-- Автор 4 -->
-                                    <Label x:Name="Card_1_LabelAuthor4" Content="Кузнецов К.К."
-               FontSize="11"
-               FontWeight="Medium"
-               Foreground="White"
-               FontFamily="Montserrat"
-               VerticalAlignment="Center"
-               Padding="2,0"
-               Background="Transparent" 
-               BorderThickness="0"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -308,7 +266,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="Card_2" Width="349" Height="448" 
+            <Button Tag="2" x:Name="Card_2" Width="349" Height="448" 
                 Canvas.Left="407.2" Canvas.Top="42"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -598,7 +556,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="Card_5" Width="349" Height="448" 
+            <Button Tag="3" x:Name="Card_5" Width="349" Height="448" 
                 Canvas.Left="40" Canvas.Top="505.4"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -888,7 +846,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="Card_6" Width="349" Height="448" 
+            <Button Tag="4" x:Name="Card_6" Width="349" Height="448" 
                 Canvas.Left="407.2" Canvas.Top="505.269"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -1178,7 +1136,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="Card_3" Width="349" Height="448" 
+            <Button Tag="5" x:Name="Card_3" Width="349" Height="448" 
                 Canvas.Left="777.199" Canvas.Top="42"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -1757,7 +1715,7 @@
                     </Button.RenderTransform>
                 </Button>
             </Button>
-            <Button x:Name="Card_4" Width="349" Height="448" 
+            <Button Tag="6" x:Name="Card_4" Width="349" Height="448" 
                 Canvas.Left="1144.53" Canvas.Top="42"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -2047,7 +2005,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="Card_7" Width="349" Height="448" 
+            <Button Tag="7" x:Name="Card_7" Width="349" Height="448" 
                 Canvas.Left="777.2" Canvas.Top="505.066"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -2626,7 +2584,7 @@
                     </Button.RenderTransform>
                 </Button>
             </Button>
-            <Button x:Name="Card_8" Width="349" Height="448" 
+            <Button Tag="8" x:Name="Card_8" Width="349" Height="448" 
                 Canvas.Left="1144.2" Canvas.Top="504.667"
                 Click="Button_Click" Background="White" Foreground="#FF3A454B"
                 FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">

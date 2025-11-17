@@ -25,13 +25,14 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null)
+        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No discription")
         {
             this.id = id;
             this.name = title;
             this.type = type;
             this.author = author;
             this.questions = questions;
+            this.description = description;
 
             // Загружаем картинку из БД
             if (imageData != null)
@@ -40,18 +41,37 @@ namespace PsychoVS2
             }
             else
             {
-                string path = System.IO.Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "Images",
-                    "testImage2.png"
-                );
+                // Ищем корневую папку Psycho1
+                DirectoryInfo dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                DirectoryInfo root = null;
+                while (dir != null)
+                {
+                    if (dir.Name.Equals("Psycho1", StringComparison.OrdinalIgnoreCase))
+                    {
+                        root = dir;
+                        break;
+                    }
+                    dir = dir.Parent;
+                }
+
+                if (root == null)
+                    throw new FileNotFoundException("Не удалось найти папку Psycho1!");
+
+                // Формируем путь к картинке
+                string path = Path.Combine(root.FullName, "PsychoVS2", "Image", "testImage2.png");
+
+                if (!File.Exists(path))
+                    throw new FileNotFoundException($"Файл не найден: {path}");
 
                 this.image = LoadBitmapImage(File.ReadAllBytes(path));
             }
+
+            this.description = description;
         }
 
         public int id = -1;
         public string name;
+        public string description;
         public string type;
         public string author;
         public int amm_of_questions = 0;
@@ -120,7 +140,7 @@ namespace PsychoVS2
     //****************WORK WITH DB*******************************************
     public class DB_work
     {
-
+        public int number_of_pages;
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
@@ -132,13 +152,46 @@ namespace PsychoVS2
         private string connectionString = "";
         //command to connect
         //automatic search of PATH
+
+        //private void init_db_path()
+        //{
+        //    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+        //    dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
+        //    connectionString = $"Data Source={dbPath};Version={version};";
+        //    MessageBox.Show(connectionString);
+        //}
         private void init_db_path()
         {
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ищем родительскую папку "Psycho1"
+            DirectoryInfo dir = new DirectoryInfo(exeDir);
+            DirectoryInfo root = null;
+
+            while (dir != null)
+            {
+                if (dir.Name.Equals("Psycho1", StringComparison.OrdinalIgnoreCase))
+                {
+                    root = dir;
+                    break;
+                }
+                dir = dir.Parent;
+            }
+
+            if (root == null)
+            {
+                MessageBox.Show("Не удалось найти папку Psycho1!");
+                return;
+            }
+
+            // Путь к tests.db внутри "Делатель тестов -3006"
+            string dbFolder = Path.Combine(root.FullName, "Делатель тестов -3006");
+            dbPath = Path.Combine(dbFolder, "tests.db");
+
             connectionString = $"Data Source={dbPath};Version={version};";
             MessageBox.Show(connectionString);
         }
+
 
         public void load_all_tests()
         {
@@ -157,6 +210,7 @@ namespace PsychoVS2
                         string title = reader["title"].ToString();
                         string type = reader["type"].ToString();
                         string author = reader["author"].ToString();
+                        string description = reader["description"].ToString();
 
                         // Загружаем картинку из таблицы images
                         byte[] image = null;
@@ -171,7 +225,7 @@ namespace PsychoVS2
                         }
 
 
-                        tests.Add(new Psycho_Test(testId, title, type, author, null, image));
+                        tests.Add(new Psycho_Test(testId, title, type, author, null, image, description));
 
                         using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
                         {
@@ -179,6 +233,7 @@ namespace PsychoVS2
                             tests[tests.Count - 1].amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
                         }
                     }
+                    this.number_of_pages = this.tests.Count / 8;
                 }
             }
         }
@@ -201,6 +256,7 @@ namespace PsychoVS2
                             string title = reader["title"].ToString();
                             string type = reader["type"].ToString();
                             string author = reader["author"].ToString();
+                            string description = reader["description"].ToString();
 
 
                             // Загружаем картинку из таблицы images
@@ -216,7 +272,7 @@ namespace PsychoVS2
                             }
 
 
-                            current_test = new Psycho_Test(testId, title, type, author, null, image);
+                            current_test = new Psycho_Test(testId, title, type, author, null, image, description);
 
                             using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
                             {
