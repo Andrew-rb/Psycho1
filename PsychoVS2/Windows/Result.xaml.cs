@@ -15,13 +15,15 @@ namespace PsychoVS2.Windows
         public Result(Answer[] array_of_answ, int test_id) {
             this.test_id = test_id;
             this.answers_array = array_of_answ;
+            this.points = new Dictionary<string, int>();
+            InitializeComponent();
             Loaded += OnWindowLoaded;
-            TestDateLabel.Content = $"Дата прохождения: {DateTime.Now:dd.MM.yyyy HH:mm}";
         }
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             // Запуск анимаций при загрузке окна
+            this.Results();
             StartAnimations();
         }
 
@@ -149,7 +151,7 @@ namespace PsychoVS2.Windows
                         alreafy = true;
                         this.temp_storage_for_result.Content = result.result;
                         ///when desided what where, uncomment 
-                        //this.show_res_on_page_temp(result);
+                        this.show_res_on_page_temp(result);
                         break;
                     default:
                         break;
@@ -159,10 +161,11 @@ namespace PsychoVS2.Windows
         }
 
         /// uncomment when desided
-        /*private void show_res_on_page_temp(Results valid_res)
+        private void show_res_on_page_temp(Results valid_res)
         {
             this.temp_storage_for_result.Content = valid_res.result;
-        }*/
+            this.Data_label.Content = $"Дата прохождения: {DateTime.Now:dd.MM.yyyy HH:mm}";
+        }
 
         private int check_condition(string expression)
         {

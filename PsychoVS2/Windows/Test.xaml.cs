@@ -18,11 +18,21 @@ namespace PsychoVS2.Windows
             InitializeComponent();
             WindowState = WindowState.Maximized;
             this.choosen_test = choosen_test;
+            this.init_for_internal_arrays();
+        }
+
+        private void init_for_internal_arrays()
+        {
             this.num_of_quest = this.choosen_test.amm_of_questions;
             this.selected_answer_id = new int[this.num_of_quest];
             this.questions = this.choosen_test.questions.ToArray(); //new Question[this.num_of_quest];
             this.choosen_test.questions.CopyTo(this.questions);
             this.asnwer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
+            for (int i = 0; i < 6; i++)
+            {
+                this.asnwer_buttons[i].Tag = i;
+            }
+            this.Show_question_and_answers();
         }
 
         private void AnswerButton_Click(object sender, RoutedEventArgs e)
@@ -80,8 +90,8 @@ namespace PsychoVS2.Windows
 
         private void Show_question_and_answers()
         {
-            this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest+1}";
-            Answer[] ans_to_quest = this.questions[this.current_question].answers.ToArray();
+            this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest}";
+            Answer[] ans_to_quest = this.questions[this.current_question-1].answers.ToArray();
             for (int i = 0; i < ans_to_quest.Length; i++)
             {
                 this.asnwer_buttons[i].Content = ans_to_quest[i].text;
@@ -89,9 +99,21 @@ namespace PsychoVS2.Windows
             if (this.selected_answer_id[this.current_question-1] != 0)
             {
                 this.asnwer_buttons[this.selected_answer_id[this.current_question-1]-1].Style = (Style)FindResource("SelectedAnswerButtonStyle");
+                SelectionIndicator.Content = "✓ Ответ выбран";
+                SelectionIndicator.Foreground = new System.Windows.Media.SolidColorBrush(
+                System.Windows.Media.Color.FromArgb(0xFF, 0xFC, 0xCC, 0x3C));
             }
-            selectedAnswer.Style = (Style)FindResource("AnswerButtonStyle");
-            this.selectedAnswer = null;
+            else
+            {
+                SelectionIndicator.Content = "Выберите вариант ответа";
+                SelectionIndicator.Foreground = new System.Windows.Media.SolidColorBrush(
+                System.Windows.Media.Color.FromArgb(204, 255, 255, 255));
+            }
+            if (selectedAnswer != null)
+            {
+                selectedAnswer.Style = (Style)FindResource("AnswerButtonStyle");
+                this.selectedAnswer = null;
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
