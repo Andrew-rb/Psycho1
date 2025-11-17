@@ -9,13 +9,11 @@ namespace PsychoVS2.Windows
 {
     public partial class Result : Window
     {
-        private Answer[] answers_array;
         private Dictionary<string, int> points;
         private int test_id;
-        public Result(Answer[] array_of_answ, int test_id) {
+        public Result(Dictionary<string,int> points_dict, int test_id) {
             this.test_id = test_id;
-            this.answers_array = array_of_answ;
-            this.points = new Dictionary<string, int>();
+            this.points = points_dict;
             InitializeComponent();
             Loaded += OnWindowLoaded;
         }
@@ -113,20 +111,6 @@ namespace PsychoVS2.Windows
 
         public void Results()
         {
-            int length = this.answers_array.Length;
-            for (int i = 0; i < length; i++)
-            {
-                Points_cods[] temp = this.answers_array[i].points_cods.ToArray();
-                foreach (Points_cods point_code in temp)
-                {
-                    if (this.points.ContainsKey(point_code.type))
-                    {
-                        this.points[point_code.type] += point_code.value;
-                        continue;
-                    }
-                    this.points.Add(point_code.type, point_code.value);
-                }
-            }
             bool alreafy = false;
             Results[] array_of_a_resaults = PsychoVS2.Windows.Test_choice.db.get_results(this.test_id);
             string text = "";
