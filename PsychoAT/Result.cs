@@ -39,5 +39,10 @@ namespace PsychoAT
         {
             this.Internal_set_result_for_text(resault);
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
