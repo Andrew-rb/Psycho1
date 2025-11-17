@@ -74,7 +74,7 @@ namespace PsychoVS2.Windows
                 Answer[] ret_array = new Answer[this.num_of_quest];
                 for (short i = 0; i < this.num_of_quest; i++)
                 {
-                    ret_array[i] = this.questions[i].answers.ToArray()[this.selected_answer_id[i]-1];
+                    ret_array[i] = this.questions[i].answers.ToArray()[this.selected_answer_id[i]];
                 }
                 Result result = new Result(ret_array, this.choosen_test.id);
                 result.Show();
@@ -91,10 +91,18 @@ namespace PsychoVS2.Windows
         private void Show_question_and_answers()
         {
             this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest}";
-            Answer[] ans_to_quest = this.questions[this.current_question-1].answers.ToArray();
+            Answer[] ans_to_quest = new Answer[6];
+            this.questions[this.current_question-1].answers.ToArray().CopyTo(ans_to_quest,0);
             for (int i = 0; i < ans_to_quest.Length; i++)
             {
-                this.asnwer_buttons[i].Content = ans_to_quest[i].text;
+                if (ans_to_quest[i] != null)
+                {
+                    this.asnwer_buttons[i].Visibility = Visibility.Visible;
+                    this.asnwer_buttons[i].Content = ans_to_quest[i].text;
+                    continue;
+                }
+                else
+                    this.asnwer_buttons[i].Visibility = Visibility.Hidden;
             }
             if (this.selected_answer_id[this.current_question-1] != 0)
             {
