@@ -80,6 +80,7 @@ namespace PsychoVS2.Windows
 
         private void Show_question_and_answers()
         {
+            this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest+1}";
             Answer[] ans_to_quest = this.questions[this.current_question].answers.ToArray();
             for (int i = 0; i < ans_to_quest.Length; i++)
             {
