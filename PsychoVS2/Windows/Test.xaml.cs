@@ -20,7 +20,7 @@ namespace PsychoVS2.Windows
             this.choosen_test = choosen_test;
             this.num_of_quest = this.choosen_test.amm_of_questions;
             this.selected_answer_id = new int[this.num_of_quest];
-            this.questions = new Question[this.num_of_quest];
+            this.questions = this.choosen_test.questions.ToArray(); //new Question[this.num_of_quest];
             this.choosen_test.questions.CopyTo(this.questions);
             this.asnwer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
         }
@@ -61,7 +61,12 @@ namespace PsychoVS2.Windows
             if (this.num_of_quest == this.current_question)
             {
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
-                Result result = new Result();
+                Answer[] ret_array = new Answer[this.num_of_quest];
+                for (short i = 0; i < this.num_of_quest; i++)
+                {
+                    ret_array[i] = this.questions[i].answers.ToArray()[this.selected_answer_id[i]-1];
+                }
+                Result result = new Result(ret_array, this.choosen_test.id);
                 result.Show();
                 this.Close();
             }

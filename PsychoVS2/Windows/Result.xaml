@@ -273,7 +273,8 @@
                                                Style="{StaticResource ResultLabelStyle}" 
                                                FontWeight="Bold" FontSize="18" 
                                                Foreground="#2C3E50" HorizontalAlignment="Center"/>
-                                        <Label Content="Аналитик-стратег" 
+                                        <Label x:Name="temp_storage_for_result"
+                                               Content="Аналитик-стратег" 
                                                Style="{StaticResource ResultLabelStyle}" 
                                                FontSize="20" FontWeight="Bold" 
                                                Foreground="#4A90E2" HorizontalAlignment="Center"
