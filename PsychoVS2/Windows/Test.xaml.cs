@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -71,12 +72,7 @@ namespace PsychoVS2.Windows
             if (this.num_of_quest == this.current_question)
             {
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
-                Answer[] ret_array = new Answer[this.num_of_quest];
-                for (short i = 0; i < this.num_of_quest; i++)
-                {
-                    ret_array[i] = this.questions[i].answers.ToArray()[this.selected_answer_id[i]];
-                }
-                Result result = new Result(ret_array, this.choosen_test.id);
+                Result result = new Result(this.for_res(), this.choosen_test.id);
                 result.Show();
                 this.Close();
             }
@@ -86,6 +82,35 @@ namespace PsychoVS2.Windows
                 this.current_question += 1;
                 this.Show_question_and_answers();
             }
+        }
+
+        private Dictionary<string, int> for_res()
+        {
+            Dictionary<string, int> ret_dic = new Dictionary<string, int>();
+            foreach (Question quest in this.questions)
+            {
+                foreach (Answer answ in quest.answers)
+                {
+                    foreach (Points_cods point in answ.points_cods)
+                    {
+                        if (!ret_dic.ContainsKey(point.type))
+                            ret_dic[point.type] = 0;
+                    }
+                }
+            }
+            Answer[] selected_answers = new Answer[this.num_of_quest];
+            for (short i = 0; i < this.num_of_quest; i++)
+            {
+                selected_answers[i] = this.questions[i].answers.ToArray()[this.selected_answer_id[i]];
+            }
+            foreach (Answer ans in selected_answers)
+            {
+                foreach (Points_cods points in ans.points_cods)
+                {
+                    ret_dic[points.type] += points.value;
+                }
+            }
+            return ret_dic;
         }
 
         private void Show_question_and_answers()
