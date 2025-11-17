@@ -137,6 +137,7 @@ namespace PsychoVS2.Windows
             MessageBox.Show(text, "dadsad");
             foreach (Results result in array_of_a_resaults)
             {
+                MessageBox.Show(result.condition);
                 if (alreafy)
                     break;
                 switch (this.check_condition(result.condition))
