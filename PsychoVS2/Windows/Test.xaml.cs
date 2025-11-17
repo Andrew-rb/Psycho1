@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Threading.Tasks;
 
 namespace PsychoVS2.Windows
 {
@@ -13,6 +15,7 @@ namespace PsychoVS2.Windows
         private int[] selected_answer_id;
         private Question[] questions;
         private Button[] asnwer_buttons;
+        private Dictionary<string, int> points;
 
         public Test( Psycho_Test choosen_test)
         {
@@ -33,7 +36,13 @@ namespace PsychoVS2.Windows
             {
                 this.asnwer_buttons[i].Tag = i;
             }
+            Task.Run(() => this.init_of_points());
             this.Show_question_and_answers();
+        }
+
+        private void init_of_points()
+        {
+            this.points = this.for_res();
         }
 
         private void AnswerButton_Click(object sender, RoutedEventArgs e)
@@ -72,7 +81,7 @@ namespace PsychoVS2.Windows
             if (this.num_of_quest == this.current_question)
             {
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
-                Result result = new Result(this.for_res(), this.choosen_test.id);
+                Result result = new Result(this.points, this.choosen_test.id);
                 result.Show();
                 this.Close();
             }
