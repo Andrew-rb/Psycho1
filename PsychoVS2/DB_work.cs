@@ -27,7 +27,7 @@ namespace PsychoVS2
         public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No description")
         {
             this.id = id;
-            if (name != null) this.name = title; else this.name = "none";
+            if (title != null) this.name = title; else this.name = "none";
             if (type != null) this.type = type; else this.type = "none";
             if (author != null) this.author = author; else this.author = "none";
             this.questions = questions;
@@ -374,7 +374,7 @@ namespace PsychoVS2
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT condition, result_text FROM results WHERE test_id = @tid";
+                string sql = "SELECT condition, position, result_text FROM results WHERE test_id = @tid";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
