@@ -44,8 +44,8 @@
             this.tableLayoutPanel1.Controls.Add(this.guna2Button1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.Exit_button, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.Resault_text, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(-6, 1);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(-9, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.77049F));
@@ -53,8 +53,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.28161F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.022988F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(731, 566);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1096, 871);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // guna2Button1
@@ -67,13 +67,14 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(193)))), ((int)(((byte)(120)))));
             this.guna2Button1.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(8, 3);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2Button1.Location = new System.Drawing.Point(12, 5);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2Button1.Name = "guna2Button1";
             this.tableLayoutPanel1.SetRowSpan(this.guna2Button1, 2);
-            this.guna2Button1.Size = new System.Drawing.Size(715, 129);
+            this.guna2Button1.Size = new System.Drawing.Size(1072, 198);
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "Результаты";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // Exit_button
             // 
@@ -87,10 +88,10 @@
             this.Exit_button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(84)))), ((int)(((byte)(77)))));
             this.Exit_button.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit_button.ForeColor = System.Drawing.Color.White;
-            this.Exit_button.Location = new System.Drawing.Point(574, 470);
-            this.Exit_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Exit_button.Location = new System.Drawing.Point(860, 725);
+            this.Exit_button.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Exit_button.Name = "Exit_button";
-            this.Exit_button.Size = new System.Drawing.Size(148, 75);
+            this.Exit_button.Size = new System.Drawing.Size(222, 115);
             this.Exit_button.TabIndex = 5;
             this.Exit_button.Text = "Выход";
             this.Exit_button.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -107,21 +108,21 @@
             this.Resault_text.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(132)))), ((int)(((byte)(103)))));
             this.Resault_text.Font = new System.Drawing.Font("Cascadia Mono SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Resault_text.ForeColor = System.Drawing.Color.White;
-            this.Resault_text.Location = new System.Drawing.Point(73, 168);
-            this.Resault_text.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Resault_text.Location = new System.Drawing.Point(110, 260);
+            this.Resault_text.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Resault_text.Name = "Resault_text";
-            this.Resault_text.Size = new System.Drawing.Size(583, 240);
+            this.Resault_text.Size = new System.Drawing.Size(874, 369);
             this.Resault_text.TabIndex = 4;
             this.Resault_text.Text = "Вывод результатов";
             // 
             // Result
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(234)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(719, 562);
+            this.ClientSize = new System.Drawing.Size(1078, 865);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Result";
             this.Text = "Result";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Result_FormClosed);

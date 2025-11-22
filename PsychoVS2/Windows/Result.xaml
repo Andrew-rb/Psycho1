@@ -157,7 +157,7 @@
                             <StackPanel>
                                 <Label Content="Тип теста" Style="{StaticResource InfoLabelStyle}" 
                                        FontWeight="Bold" Foreground="#2C3E50"/>
-                                <Label Content="Психологический тест личности" Style="{StaticResource InfoLabelStyle}" 
+                                <Label x:Name="Test_type" Content="Психологический тест личности" Style="{StaticResource InfoLabelStyle}" 
                                        Margin="0,5,0,0"/>
                             </StackPanel>
                         </Border>
@@ -170,8 +170,8 @@
                             <StackPanel>
                                 <Label Content="Дата прохождения" Style="{StaticResource InfoLabelStyle}" 
                                        FontWeight="Bold" Foreground="#2C3E50"/>
-                                <Label Content="" Style="{StaticResource InfoLabelStyle}" 
-                                       Margin="0,5,0,0" x:Name="TestDateLabel"/>
+                                <Label x:Name="Data_label" Content="" Style="{StaticResource InfoLabelStyle}" 
+                                       Margin="0,5,0,0"/>
                             </StackPanel>
                         </Border>
 
@@ -183,7 +183,7 @@
                             <StackPanel>
                                 <Label Content="Общий результат" Style="{StaticResource InfoLabelStyle}" 
                                        FontWeight="Bold" Foreground="#2C3E50"/>
-                                <Label Content="85 баллов" Style="{StaticResource InfoLabelStyle}" 
+                                <Label x:Name="Int_resaults_label" Content="85 баллов" Style="{StaticResource InfoLabelStyle}" 
                                        Margin="0,5,0,0" FontWeight="Bold" Foreground="#27AE60"/>
                             </StackPanel>
                         </Border>
@@ -196,7 +196,7 @@
                             <StackPanel>
                                 <Label Content="Уровень" Style="{StaticResource InfoLabelStyle}" 
                                        FontWeight="Bold" Foreground="#2C3E50"/>
-                                <Label Content="Выше среднего" Style="{StaticResource InfoLabelStyle}" 
+                                <Label x:Name="Level_of_resault_label" Content="Выше среднего" Style="{StaticResource InfoLabelStyle}" 
                                        Margin="0,5,0,0" FontStyle="Italic"/>
                             </StackPanel>
                         </Border>
@@ -210,16 +210,16 @@
                                    FontWeight="SemiBold" Margin="0,0,0,10" FontSize="16"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
-                                    <Label Content="Иванов А.П." Style="{StaticResource InfoLabelStyle}"/>
+                                    <Label x:Name="Author_label_1" Content="Иванов А.П." Style="{StaticResource InfoLabelStyle}"/>
                                 </Border>
                                 <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
-                                    <Label Content="Петрова М.С." Style="{StaticResource InfoLabelStyle}"/>
+                                    <Label x:Name="Author_label_2" Content="Петрова М.С." Style="{StaticResource InfoLabelStyle}"/>
                                 </Border>
                                 <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
-                                    <Label Content="Сидоров В.К." Style="{StaticResource InfoLabelStyle}"/>
+                                    <Label x:Name="Author_label_3" Content="Сидоров В.К." Style="{StaticResource InfoLabelStyle}"/>
                                 </Border>
                                 <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
-                                    <Label Content="Козлова Е.Н." Style="{StaticResource InfoLabelStyle}"/>
+                                    <Label x:Name="Author_label_4" Content="Козлова Е.Н." Style="{StaticResource InfoLabelStyle}"/>
                                 </Border>
                             </StackPanel>
                         </StackPanel>
@@ -273,7 +273,8 @@
                                                Style="{StaticResource ResultLabelStyle}" 
                                                FontWeight="Bold" FontSize="18" 
                                                Foreground="#2C3E50" HorizontalAlignment="Center"/>
-                                        <Label Content="Аналитик-стратег" 
+                                        <Label x:Name="temp_storage_for_result"
+                                               Content="Аналитик-стратег" 
                                                Style="{StaticResource ResultLabelStyle}" 
                                                FontSize="20" FontWeight="Bold" 
                                                Foreground="#4A90E2" HorizontalAlignment="Center"

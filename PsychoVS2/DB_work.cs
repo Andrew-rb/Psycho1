@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using NCalc;
+﻿using NCalc;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -25,14 +24,14 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No discription")
+        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No description")
         {
             this.id = id;
-            this.name = title;
-            this.type = type;
-            this.author = author;
+            if (title != null) this.name = title; else this.name = "none";
+            if (type != null) this.type = type; else this.type = "none";
+            if (author != null) this.author = author; else this.author = "none";
             this.questions = questions;
-            this.description = description;
+            if (description != null) this.description = description; else this.description = "No description";
 
             // Загружаем картинку из БД
             if (imageData != null)
@@ -75,6 +74,7 @@ namespace PsychoVS2
         public string type;
         public string author;
         public int amm_of_questions = 0;
+        public int estemated_time = 0;
 
         public List<Question> questions;
         public BitmapImage image;
@@ -94,6 +94,7 @@ namespace PsychoVS2
             }
         }
     }
+
 
     //Question storage
     public class Question
@@ -140,7 +141,6 @@ namespace PsychoVS2
     //****************WORK WITH DB*******************************************
     public class DB_work
     {
-        public int number_of_pages;
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
@@ -233,7 +233,6 @@ namespace PsychoVS2
                             tests[tests.Count - 1].amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
                         }
                     }
-                    this.number_of_pages = this.tests.Count / 8;
                 }
             }
         }
@@ -375,7 +374,7 @@ namespace PsychoVS2
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT condition, result_text FROM results WHERE test_id = @tid";
+                string sql = "SELECT condition, position, result_text FROM results WHERE test_id = @tid";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
