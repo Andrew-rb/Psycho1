@@ -409,8 +409,6 @@ namespace PsychoVS2
             init_db_path();
             this.load_all_tests();
             show_all_tests();
-            load_current_test(2);
-            show_current_test();
         }
     }
 }
