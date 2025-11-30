@@ -134,7 +134,7 @@ namespace PsychoVS2.Windows
                         break;
                     case 1:
                         alreafy = true;
-                        this.temp_storage_for_result.Content = result.result;
+                        this.temp_storage_for_result.Content = result.description;
                         ///when desided what where, uncomment 
                         this.show_res_on_page_temp(result);
                         break;
@@ -148,7 +148,7 @@ namespace PsychoVS2.Windows
         /// uncomment when desided
         private void show_res_on_page_temp(Results valid_res)
         {
-            this.temp_storage_for_result.Content = valid_res.result;
+            this.temp_storage_for_result.Content = valid_res.description;
             this.Data_label.Content = $"Дата прохождения: {DateTime.Now:dd.MM.yyyy HH:mm}";
         }
 

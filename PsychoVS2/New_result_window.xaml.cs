@@ -64,7 +64,7 @@ namespace PsychoVS2
                         Array_of_already_done_points.Add(""/*result.smt_for_point*/);
                         Label new_res = new Label
                         {
-                            Content = result.result,
+                            Content = result.description,
                             FontSize = 14,
                             Background = Brushes.Gray
                             
