@@ -100,6 +100,7 @@ namespace PsychoVS2.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             await this.init_for_arrays();
             this.Show_test_on_page();
         }
