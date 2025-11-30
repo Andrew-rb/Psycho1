@@ -51,7 +51,7 @@ namespace PsychoVS2
             {
             MessageBox.Show(result.condition);
             if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains("")) { break; }
-            else if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains(""/*result.smt_for_point*/)) { continue; }
+            else if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains(result.)) { continue; }
                 switch (this.check_condition(result.condition))
                 {
                     case -1:

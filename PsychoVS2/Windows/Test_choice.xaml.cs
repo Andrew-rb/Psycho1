@@ -100,12 +100,6 @@ namespace PsychoVS2.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var img = Card_2.Template.FindName("Card_2_Image", Card_2) as Image;
-            if (img != null)
-            {
-                img.Source = db.current_test.image;
-                MessageBox.Show("loaded");
-            }
             await this.init_for_arrays();
             this.Show_test_on_page();
         }

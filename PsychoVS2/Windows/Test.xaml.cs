@@ -128,6 +128,7 @@ namespace PsychoVS2.Windows
             this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest}";
             Answer[] ans_to_quest = new Answer[6];
             this.questions[this.current_question-1].answers.ToArray().CopyTo(ans_to_quest,0);
+            this.Question.Text = this.questions[this.current_question-1].text;
             for (int i = 0; i < ans_to_quest.Length; i++)
             {
                 if (ans_to_quest[i] != null)
