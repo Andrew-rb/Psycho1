@@ -46,6 +46,7 @@ namespace PsychoVS2
             {
                 text += vk.Key.ToString() + vk.Value.ToString();
             }
+            MessageBox.Show(text, "dadsad");
             foreach (Results result in array_of_a_resaults)
             {
             MessageBox.Show(result.condition);
