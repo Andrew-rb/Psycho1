@@ -46,12 +46,11 @@ namespace PsychoVS2
             {
                 text += vk.Key.ToString() + vk.Value.ToString();
             }
-            MessageBox.Show(text, "dadsad");
             foreach (Results result in array_of_a_resaults)
             {
             MessageBox.Show(result.condition);
             if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains("")) { break; }
-            else if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains(result.)) { continue; }
+            else if (Array_of_already_done_points.Count != 0 && Array_of_already_done_points.Contains(result.point_type)) { continue; }
                 switch (this.check_condition(result.condition))
                 {
                     case -1:
@@ -61,10 +60,10 @@ namespace PsychoVS2
                     case 0:
                         break;
                     case 1:
-                        Array_of_already_done_points.Add(""/*result.smt_for_point*/);
+                        Array_of_already_done_points.Add(result.point_type);
                         Label new_res = new Label
                         {
-                            Content = result.description,
+                            Content = $"{result.title}: {result.description}",
                             FontSize = 14,
                             Background = Brushes.Gray
                             
