@@ -81,8 +81,9 @@ namespace PsychoVS2.Windows
             if (this.num_of_quest == this.current_question)
             {
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
-                Result result = new Result(this.points, this.choosen_test.id);
-                result.Show();
+                //Result result = new Result(this.points, this.choosen_test.id);
+                New_result_window Result_window = new New_result_window(this.points, this.choosen_test.id);
+                Result_window.Show();
                 this.Close();
             }
             else
