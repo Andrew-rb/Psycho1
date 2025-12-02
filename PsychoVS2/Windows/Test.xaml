@@ -332,7 +332,7 @@
                            VerticalAlignment="Center"/>
 
                     <!-- Прогресс -->
-                    <ProgressBar Grid.Column="1" 
+                    <ProgressBar Grid.Column="1" x:Name="Progress_bar" 
                                  Value="40" 
                                  Maximum="100" 
                                  Height="8" 
