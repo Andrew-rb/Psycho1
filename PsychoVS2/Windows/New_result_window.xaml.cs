@@ -113,20 +113,60 @@ namespace PsychoVS2
                 }
             }
 
-            /*if (this.Labels_Panel.Children.Count == 0)
+            if (this.Labels_Panel.Children.Count == 0)
             {
-                TextBlock noResultsText = new TextBlock
+                Border No_result_container = new Border
                 {
-                    Text = "Нет результатов для отображения",
-                    FontSize = 18,
-                    Foreground = new SolidColorBrush(Color.FromRgb(117, 117, 117)),
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    FontStyle = FontStyles.Italic
+                    CornerRadius = new CornerRadius(10),
+                    Background = Brushes.White,
+                    BorderBrush = new SolidColorBrush(Color.FromRgb(224, 224, 224)),
+                    BorderThickness = new Thickness(1),
+                    Padding = new Thickness(20),
+                    Margin = new Thickness(0, 0, 0, 15),
+                    Effect = new DropShadowEffect
+                    {
+                        BlurRadius = 8,
+                        Opacity = 0.05,
+                        ShadowDepth = 2
+                    }
                 };
+                StackPanel contentPanel = new StackPanel
+                {
+                    Orientation = Orientation.Vertical
+                };
+                TextBlock titleText = new TextBlock
+                {
+                    Text = "Нет подходящего результата",
+                    FontSize = 18,
+                    FontWeight = FontWeights.SemiBold,
+                    Foreground = new SolidColorBrush(Color.FromRgb(25, 118, 210)),
+                    Margin = new Thickness(0, 0, 0, 8),
+                    TextAlignment = TextAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+                TextBlock descriptionText = new TextBlock
+                {
+                    Text = "Извините, но те, кто делал этот тест проебались, мы надеемся такого в будущем не повториться!!",
+                    FontSize = 16,
+                    Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51)),
+                    TextWrapping = TextWrapping.Wrap,
+                    TextAlignment = TextAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+                Border separator = new Border
+                {
+                    Height = 1,
+                    Background = new SolidColorBrush(Color.FromRgb(224, 224, 224)),
+                    Margin = new Thickness(0, 10, 0, 10),
+                    HorizontalAlignment = HorizontalAlignment.Stretch
+                };
+                contentPanel.Children.Add(titleText);
+                contentPanel.Children.Add(separator);
+                contentPanel.Children.Add(descriptionText);
 
-                this.Labels_Panel.Children.Add(noResultsText);
-            }*/
+                No_result_container.Child = contentPanel;
+                this.Labels_Panel.Children.Add(No_result_container);
+            }
         }
 
         private int check_condition(string expression)
