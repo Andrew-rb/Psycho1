@@ -138,7 +138,7 @@ namespace PsychoVS2
             Application.Current.Shutdown();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             Test_choice testChoiceWindow = new Test_choice();
             testChoiceWindow.Show();

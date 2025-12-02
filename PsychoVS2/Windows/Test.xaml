@@ -332,7 +332,7 @@
                            VerticalAlignment="Center"/>
 
                     <!-- Прогресс -->
-                    <ProgressBar Grid.Column="1" 
+                    <ProgressBar Grid.Column="1" x:Name="Progress_bar" 
                                  Value="40" 
                                  Maximum="100" 
                                  Height="8" 
@@ -380,18 +380,53 @@
                             <Style TargetType="Button" BasedOn="{StaticResource AnswerButtonStyle}"/>
                         </ItemsControl.Resources>
 
-                        <Button x:Name="answer_1" Content="Принимаю их спокойно и адаптируюсь" 
-                                Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_2" Content="Чувствую раздражение и сопротивление" 
-                                Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_3" Content="Начинаю активно искать новые решения" 
-                                Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_4" Content="Ощущаю тревогу и беспокойство" 
-                                Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_5" Content="Вижу в этом новые возможности" 
-                                Click="AnswerButton_Click"/>
-                        <Button x:Name="answer_6" Content="Стараюсь вернуть всё как было" 
-                                Click="AnswerButton_Click"/>
+                        <Button x:Name="answer_1" Click="AnswerButton_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="answer_2" 
+                            Click="AnswerButton_Click"                            
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="answer_3" 
+                            Click="AnswerButton_Click"                              
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="answer_4" 
+                                Click="AnswerButton_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="answer_5" 
+                            Click="AnswerButton_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="answer_6"
+                            Click="AnswerButton_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <TextBlock Text="Very Long Button Text" Margin="10"
+                                TextWrapping="Wrap"
+                                TextAlignment="Center"/>
+                        </Button>
                     </ItemsControl>
                 </StackPanel>
             </ScrollViewer>
