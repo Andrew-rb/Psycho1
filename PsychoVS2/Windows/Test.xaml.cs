@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Threading.Tasks;
+using WpfApp1;
 
 namespace PsychoVS2.Windows
 {
