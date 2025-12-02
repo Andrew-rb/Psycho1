@@ -15,8 +15,10 @@ namespace PsychoVS2
     public class Results
     {
         public string condition = "";
-        public string result = "";
+        public string title = "Title";
+        public string description = "Description";
         public int order = 0;
+        public string point_type = "";
     }
 
     /*Классы для хранения тестов*/
@@ -374,7 +376,7 @@ namespace PsychoVS2
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT condition, position, result_text FROM results WHERE test_id = @tid";
+                string sql = "SELECT * FROM results WHERE test_id = @tid";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
@@ -386,13 +388,17 @@ namespace PsychoVS2
                         {
                             string condition = reader["condition"] != DBNull.Value ? reader["condition"].ToString() : "";
                             string resultText = reader["result_text"] != DBNull.Value ? reader["result_text"].ToString() : "";
-                            int order1 = Convert.ToInt32(reader["position"]);
+                            string description = reader["description"] != DBNull.Value ? reader["description"].ToString() : "";
+                            string point_type = reader["points_type"] != DBNull.Value ? reader["points_type"].ToString() : "";
+                            int order = Convert.ToInt32(reader["position"]);
 
                             Results res = new Results
                             {
                                 condition = condition,
-                                result = resultText,
-                                order = order1
+                                title = resultText,
+                                description = description,
+                                order = order,
+                                point_type = point_type,
                             };
                             //MessageBox.Show(res.condition);
                             resultsList.Add(res);
@@ -409,8 +415,6 @@ namespace PsychoVS2
             init_db_path();
             this.load_all_tests();
             show_all_tests();
-            load_current_test(2);
-            show_current_test();
         }
     }
 }

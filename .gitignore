@@ -7,7 +7,6 @@
 [Ll]og/
 
 # Build artifacts
-*.dll
 *.pdb
 
 # User-specific files

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Threading.Tasks;
+using WpfApp1;
 
 namespace PsychoVS2.Windows
 {
@@ -82,6 +83,7 @@ namespace PsychoVS2.Windows
             {
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
                 //Result result = new Result(this.points, this.choosen_test.id);
+                this.update_points();
                 New_result_window Result_window = new New_result_window(this.points, this.choosen_test.id);
                 Result_window.Show();
                 this.Close();
@@ -108,6 +110,10 @@ namespace PsychoVS2.Windows
                     }
                 }
             }
+            return ret_dic;
+        }
+
+        private void update_points() {
             Answer[] selected_answers = new Answer[this.num_of_quest];
             for (short i = 0; i < this.num_of_quest; i++)
             {
@@ -117,10 +123,9 @@ namespace PsychoVS2.Windows
             {
                 foreach (Points_cods points in ans.points_cods)
                 {
-                    ret_dic[points.type] += points.value;
+                    this.points[points.type] += points.value;
                 }
             }
-            return ret_dic;
         }
 
         private void Show_question_and_answers()
@@ -128,6 +133,7 @@ namespace PsychoVS2.Windows
             this.Answer_counter.Content = $"Вопрос {this.current_question} из {this.num_of_quest}";
             Answer[] ans_to_quest = new Answer[6];
             this.questions[this.current_question-1].answers.ToArray().CopyTo(ans_to_quest,0);
+            this.Question.Text = this.questions[this.current_question-1].text;
             for (int i = 0; i < ans_to_quest.Length; i++)
             {
                 if (ans_to_quest[i] != null)
