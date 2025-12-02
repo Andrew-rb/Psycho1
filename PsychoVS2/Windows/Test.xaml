@@ -369,7 +369,7 @@
                            LineHeight="32"/>
 
                     <!-- Варианты ответов -->
-                    <ItemsControl x:Name="AnswersContainer" Margin="0,40,0,0" Height="226">
+                    <ItemsControl x:Name="AnswersContainer" Margin="0,40,0,0" Height="319">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="2" HorizontalAlignment="Center"/>
