@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 
-namespace WpfApp1
+namespace PsychoVS2
 {
     /// <summary>
     /// Interaction logic for New_result_window.xaml

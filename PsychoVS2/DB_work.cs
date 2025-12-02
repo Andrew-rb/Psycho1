@@ -26,12 +26,12 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No description")
+        public Psycho_Test(int id, string title, string type = "none", string author = "Неизвестный автор", List<Question> questions = null, byte[] imageData = null, string description = "No description")
         {
             this.id = id;
             if (title != null) this.name = title; else this.name = "none";
             if (type != null) this.type = type; else this.type = "none";
-            if (author != null) this.author = author; else this.author = "none";
+            if (author != null) this.author = author; else this.author = "Неизвестный автор";
             this.questions = questions;
             if (description != null) this.description = description; else this.description = "No description";
 

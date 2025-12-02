@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1;
 
 namespace PsychoVS2.Windows
 {
@@ -15,8 +14,9 @@ namespace PsychoVS2.Windows
         private int num_of_quest, current_question = 1;
         private int[] selected_answer_id;
         private Question[] questions;
-        private Button[] asnwer_buttons;
+        private Button[] answer_buttons;
         private Dictionary<string, int> points;
+        private float step_for_progress_bar;
 
         public Test( Psycho_Test choosen_test)
         {
@@ -29,13 +29,15 @@ namespace PsychoVS2.Windows
         private void init_for_internal_arrays()
         {
             this.num_of_quest = this.choosen_test.amm_of_questions;
-            this.selected_answer_id = new int[this.num_of_quest];
+            this.selected_answer_id = Enumerable.Repeat(-1,this.num_of_quest).ToArray();
             this.questions = this.choosen_test.questions.ToArray(); //new Question[this.num_of_quest];
-            this.choosen_test.questions.CopyTo(this.questions);
-            this.asnwer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
+            this.step_for_progress_bar = 100/this.questions.Length;
+            this.Progress_bar.Value = step_for_progress_bar;
+            //this.choosen_test.questions.CopyTo(this.questions);
+            this.answer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
             for (int i = 0; i < 6; i++)
             {
-                this.asnwer_buttons[i].Tag = i;
+                this.answer_buttons[i].Tag = i;
             }
             Task.Run(() => this.init_of_points());
             this.Show_question_and_answers();
@@ -69,9 +71,11 @@ namespace PsychoVS2.Windows
         {
             if(this.current_question != 1)
             {
-                this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
+                if(this.selectedAnswer != null)
+                    this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
                 this.current_question -= 1;
                 this.Show_question_and_answers();
+                this.Progress_bar.Value -= this.step_for_progress_bar;
             }
             // Навигация назад
             //MessageBox.Show("Переход к предыдущему вопросу");
@@ -88,11 +92,13 @@ namespace PsychoVS2.Windows
                 Result_window.Show();
                 this.Close();
             }
-            else
+            else if(this.selectedAnswer != null)
             {
+                NextButton.IsEnabled = false;
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
                 this.current_question += 1;
                 this.Show_question_and_answers();
+                this.Progress_bar.Value += this.step_for_progress_bar;
             }
         }
 
@@ -138,30 +144,33 @@ namespace PsychoVS2.Windows
             {
                 if (ans_to_quest[i] != null)
                 {
-                    this.asnwer_buttons[i].Visibility = Visibility.Visible;
-                    this.asnwer_buttons[i].Content = ans_to_quest[i].text;
+                    this.answer_buttons[i].Visibility = Visibility.Visible;
+                    this.answer_buttons[i].Content = ans_to_quest[i].text;
                     continue;
                 }
                 else
-                    this.asnwer_buttons[i].Visibility = Visibility.Hidden;
+                    this.answer_buttons[i].Visibility = Visibility.Hidden;
             }
-            if (this.selected_answer_id[this.current_question-1] != 0)
+            if (this.selected_answer_id[this.current_question-1] != -1)
             {
-                this.asnwer_buttons[this.selected_answer_id[this.current_question-1]-1].Style = (Style)FindResource("SelectedAnswerButtonStyle");
+                this.NextButton.IsEnabled = true;
+                if(selectedAnswer != null) selectedAnswer.Style = (Style)FindResource("AnswerButtonStyle");
+                this.answer_buttons[this.selected_answer_id[this.current_question-1]].Style = (Style)FindResource("SelectedAnswerButtonStyle");
+                this.selectedAnswer = this.answer_buttons[this.selected_answer_id[this.current_question - 1]];
                 SelectionIndicator.Content = "✓ Ответ выбран";
                 SelectionIndicator.Foreground = new System.Windows.Media.SolidColorBrush(
                 System.Windows.Media.Color.FromArgb(0xFF, 0xFC, 0xCC, 0x3C));
+            }
+            else if (selectedAnswer != null)
+            {
+                selectedAnswer.Style = (Style)FindResource("AnswerButtonStyle");
+                this.selectedAnswer = null;
             }
             else
             {
                 SelectionIndicator.Content = "Выберите вариант ответа";
                 SelectionIndicator.Foreground = new System.Windows.Media.SolidColorBrush(
                 System.Windows.Media.Color.FromArgb(204, 255, 255, 255));
-            }
-            if (selectedAnswer != null)
-            {
-                selectedAnswer.Style = (Style)FindResource("AnswerButtonStyle");
-                this.selectedAnswer = null;
             }
         }
 
