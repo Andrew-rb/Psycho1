@@ -31,7 +31,7 @@ namespace PsychoVS2.Windows
             this.num_of_quest = this.choosen_test.amm_of_questions;
             this.selected_answer_id = Enumerable.Repeat(-1,this.num_of_quest).ToArray();
             this.questions = this.choosen_test.questions.ToArray(); //new Question[this.num_of_quest];
-            this.step_for_progress_bar = 100/this.questions.Length;
+            this.step_for_progress_bar = 100 / this.num_of_quest + 1;
             this.Progress_bar.Value = step_for_progress_bar;
             //this.choosen_test.questions.CopyTo(this.questions);
             this.answer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
@@ -97,8 +97,8 @@ namespace PsychoVS2.Windows
                 NextButton.IsEnabled = false;
                 this.selected_answer_id[this.current_question - 1] = (int)this.selectedAnswer.Tag;
                 this.current_question += 1;
-                this.Show_question_and_answers();
                 this.Progress_bar.Value += this.step_for_progress_bar;
+                this.Show_question_and_answers();
             }
         }
 
@@ -145,7 +145,9 @@ namespace PsychoVS2.Windows
                 if (ans_to_quest[i] != null)
                 {
                     this.answer_buttons[i].Visibility = Visibility.Visible;
-                    this.answer_buttons[i].Content = ans_to_quest[i].text;
+                    var text_box = this.answer_buttons[i].Content as TextBlock;
+                    text_box.Text = ans_to_quest[i].text;
+                    //this.answer_buttons[i].Content = ans_to_quest[i].text;
                     continue;
                 }
                 else
