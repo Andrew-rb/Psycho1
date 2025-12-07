@@ -60,11 +60,27 @@ namespace PsychoVS2
 
                 // Формируем путь к картинке
                 string path = Path.Combine(root.FullName, "PsychoVS2", "Image", "testImage2.png");
+                try
+                {
+                    if (!File.Exists(path)) throw new FileNotFoundException($"Файл не найден: {path}");
+                    this.image = LoadBitmapImage(File.ReadAllBytes(path));
+                }
+                catch
+                {
+                    path = Path.Combine(root.FullName, "Image", "testImage2.png");
+                    try
+                    {
+                        if (!File.Exists(path)) throw new FileNotFoundException($"Файл не найден: {path}");
+                        this.image = LoadBitmapImage(File.ReadAllBytes(path));
+                    }
+                    catch {
+                        MessageBox.Show($"Файл не найден: {path}");
+                    }
+                    
+                }
+                
 
-                if (!File.Exists(path))
-                    throw new FileNotFoundException($"Файл не найден: {path}");
-
-                this.image = LoadBitmapImage(File.ReadAllBytes(path));
+                
             }
 
             this.description = description;
@@ -143,7 +159,7 @@ namespace PsychoVS2
     //****************WORK WITH DB*******************************************
     public class DB_work
     {
-        
+        bool connected = false;
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
 
@@ -182,23 +198,49 @@ namespace PsychoVS2
 
             if (root == null)
             {
+                connected = false;
                 MessageBox.Show("Не удалось найти папку Psycho1!");
                 return;
             }
 
             // Путь к tests.db внутри "Делатель тестов -3006"
             //"Составление тестов"
-            string dbFolder = Path.Combine(root.FullName, "Делатель тестов -3006");
+            string dbFolder = Path.Combine(root.FullName, "Составление тестов");
             dbPath = Path.Combine(dbFolder, "tests.db");
 
+            
+            try
+            {
+                if (File.Exists(dbPath)) connected = true;
+                else {
+                    connected = false;
+                    throw new FileNotFoundException();
+                }
+            }
+            catch {
+                dbFolder = Path.Combine(root.FullName, "Делатель тестов -3006");
+                dbPath = Path.Combine(dbFolder, "tests.db");
+                try
+                {
+                    if (File.Exists(dbPath)) connected = true;
+                    else connected = false;
+                }
+                catch { connected = false; }
+                
+            }
             connectionString = $"Data Source={dbPath};Version={version};";
-            MessageBox.Show(connectionString);
+            //MessageBox.Show(connected.ToString());
+            //MessageBox.Show(connectionString);
         }
 
 
         public void load_all_tests()
         {
-
+            if (!connected)
+            {
+                MessageBox.Show("Ошибка загрузки БД");
+                return;
+            }
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
@@ -242,6 +284,11 @@ namespace PsychoVS2
 
         public Psycho_Test load_current_test(int id)
         {
+            if (!connected)
+            {
+                MessageBox.Show("Ошибка загрузки БД");
+                return null;
+            }
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
