@@ -143,7 +143,7 @@ namespace PsychoVS2
     //****************WORK WITH DB*******************************************
     public class DB_work
     {
-
+        
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
 
@@ -187,6 +187,7 @@ namespace PsychoVS2
             }
 
             // Путь к tests.db внутри "Делатель тестов -3006"
+            //"Составление тестов"
             string dbFolder = Path.Combine(root.FullName, "Делатель тестов -3006");
             dbPath = Path.Combine(dbFolder, "tests.db");
 

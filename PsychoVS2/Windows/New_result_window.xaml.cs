@@ -146,7 +146,7 @@ namespace PsychoVS2
                 };
                 TextBlock descriptionText = new TextBlock
                 {
-                    Text = "Извините, но те, кто делал этот тест проебались, мы надеемся такого в будущем не повториться!!",
+                    Text = "Извините, но те при обработке результатов произошла ошибка, мы надеемся такого в будущем не повториться!!",
                     FontSize = 16,
                     Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51)),
                     TextWrapping = TextWrapping.Wrap,
