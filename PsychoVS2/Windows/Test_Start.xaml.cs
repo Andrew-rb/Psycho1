@@ -25,7 +25,7 @@ namespace PsychoVS2.Windows
 
         private void Show_test_properties()
         {
-            this.Time_button.Content = this.choosen_one.estemated_time;
+            this.Time_button.Content = $"{this.choosen_one.estemated_time} минут";
             this.Quastion_quantity.Content = this.choosen_one.amm_of_questions.ToString() + " Вопросов";
             if (this.choosen_one.type != "")
             {
