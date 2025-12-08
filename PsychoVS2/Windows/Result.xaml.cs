@@ -118,10 +118,10 @@ namespace PsychoVS2.Windows
             {
                 text += vk.Key.ToString() + vk.Value.ToString();
             }
-            MessageBox.Show(text, "dadsad");
+            //MessageBox.Show(text, "dadsad");
             foreach (Results result in array_of_a_resaults)
             {
-                MessageBox.Show(result.condition);
+                //MessageBox.Show(result.condition);
                 if (alreafy)
                     break;
                 switch (this.check_condition(result.condition))

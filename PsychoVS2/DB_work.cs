@@ -463,7 +463,7 @@ namespace PsychoVS2
         {
             init_db_path();
             this.load_all_tests();
-            show_all_tests();
+            //show_all_tests();
         }
     }
 }
