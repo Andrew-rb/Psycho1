@@ -72,7 +72,6 @@
                 </EventTrigger>
             </Style.Triggers>
         </Style>
-
         <Style x:Key="MovingShapeStyle" TargetType="Shape">
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
@@ -90,7 +89,7 @@
                 </EventTrigger>
             </Style.Triggers>
         </Style>
-        
+
         <!-- Стиль для кнопок информации -->
         <Style x:Key="InfoButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -122,7 +121,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!-- Стиль для кнопки начала теста -->
         <Style x:Key="StartTestButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#FFFCCC3C"/>
@@ -209,7 +207,6 @@
                  Style="{StaticResource FloatingShapeStyle}"
                  HorizontalAlignment="Right" VerticalAlignment="Top" 
                  Margin="0,200,150,0"/>
-
         <!-- Вращающиеся треугольники -->
         <Path Data="M0,0 L40,70 L-40,70 Z" Fill="#40FF6B6B" Opacity="0.3"
               Style="{StaticResource RotatingShapeStyle}"
@@ -285,24 +282,26 @@
         <!-- Основной контент -->
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Кнопка назад -->
-            <Button Grid.Row="0" 
-        Width="72" Height="32" 
-        Background="White" 
-        BorderThickness="0"
-        Margin="5,30,0,0" 
-        HorizontalAlignment="Left"
-        Click="BackButton_Click" VerticalAlignment="Top">
+            <Button Grid.Row="0"
+		Width="72" Height="32"
+		Background="White"
+		BorderThickness="0"
+		Margin="20,50,0,0"
+		HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+		Click="BackButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" 
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="#FFDDDDDD"
-                    BorderThickness="1"
-                    CornerRadius="16">
+                        <Border x:Name="border"
+					Background="{TemplateBinding Background}"
+					BorderBrush="#FFDDDDDD"
+					BorderThickness="1"
+					CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
                             </Border.Effect>
@@ -321,16 +320,16 @@
                     <TextBlock Text="Назад" FontSize="12" Foreground="#FF666666" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-
             <!-- Центральная область между панелями -->
-            <Grid Grid.Column="0" 
+            <Grid Grid.Column="1" 
       VerticalAlignment="Top"
-      Margin="15,56,438,0" Grid.ColumnSpan="2">
+      Margin="15,56,438,0"
+      Width="1000">
 
                 <!-- Информация о тесте -->
-                <StackPanel Orientation="Vertical" Margin="2,40,0,20" Grid.RowSpan="1" Grid.ColumnSpan="1">
+                <StackPanel Orientation="Vertical" Margin="0,40,0,20">
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="Time_button" Content="⏱ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
+                        <Button x:Name="Time_button" Content="⏱️ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
                         <Button x:Name="Quastion_quantity" Content="❓ 25 вопросов" Style="{StaticResource InfoButtonStyle}" Width="156"/>
                     </StackPanel>
                     <Button x:Name="Test_type" Content="🧠 Психологический тест" 
@@ -377,7 +376,6 @@
                                 <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
                             </Label.Background>
                         </Label>
-
                         <!-- Автор 3 -->
                         <Label x:Name="Author_label_3" Content="🧠 Смирнов Дмитрий Викторович"
            FontSize="14"
@@ -449,7 +447,6 @@
                         </DataTemplate>
                     </Label.ContentTemplate>
                 </Label>
-
                 <!-- Дополнительная информация -->
                 <StackPanel Orientation="Horizontal" 
                 HorizontalAlignment="Left" 
@@ -457,8 +454,7 @@
                 Margin="0,880,0,0">
                     <Label Content="🔒 Ваши ответы сохраняются анонимно" 
                FontSize="11" 
-               Foreground="#99FFFFFF"
-                           Visibility="Hidden"/>
+               Foreground="#99FFFFFF"/>
                 </StackPanel>
             </Grid>
 

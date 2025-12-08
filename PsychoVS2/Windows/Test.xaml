@@ -432,7 +432,7 @@
             </ScrollViewer>
 
             <!-- Нижняя панель с навигацией -->
-            <Border Grid.Row="2" Background="Transparent" Padding="0,20,0,0">
+            <Border Grid.Row="2" Background="Transparent" Padding="0,24,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -459,7 +459,7 @@
                             Style="{StaticResource NextButtonStyle}"
                             x:Name="NextButton"
                             IsEnabled="False"
-                            Click="NextButton_Click" Margin="32,-16,0,0"/>
+                            Click="NextButton_Click"/>
                 </Grid>
             </Border>
         </Grid>
