@@ -21,8 +21,8 @@
 
             <ScrollViewer Height="1023" Width="1498" Canvas.Top="42" Canvas.Left="75" VerticalScrollBarVisibility="Auto">
                 <WrapPanel Orientation="Horizontal"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
                ItemHeight="448" ItemWidth="349"
                x:Name="Panel_for_buttons"/>
             </ScrollViewer>
