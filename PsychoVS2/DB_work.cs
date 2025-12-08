@@ -26,12 +26,12 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-        public Psycho_Test(int id, string title, string type = "none", string author = "Неизвестный автор", List<Question> questions = null, byte[] imageData = null, string description = "No description")
+        public Psycho_Test(int id, string title, string type = "none", string author = "", List<Question> questions = null, byte[] imageData = null, string description = "No description")
         {
             this.id = id;
             if (title != null) this.name = title; else this.name = "none";
             if (type != null) this.type = type; else this.type = "none";
-            if (author != null) this.author = author; else this.author = "Неизвестный автор";
+            if (author != null) this.author = author; else this.author = "";
             this.questions = questions;
             if (description != null) this.description = description; else this.description = "No description";
 
@@ -84,7 +84,6 @@ namespace PsychoVS2
             }
 
             this.description = description;
-            this.estemated_time = (int)(0.5 * this.amm_of_questions + 1);
         }
 
         public int id = -1;
@@ -277,6 +276,8 @@ namespace PsychoVS2
                         {
                             countCmd.Parameters.AddWithValue("@id", testId);
                             tests[tests.Count - 1].amm_of_questions = Convert.ToInt32(countCmd.ExecuteScalar());
+                            if (tests[tests.Count - 1].amm_of_questions == 0) tests[tests.Count - 1].estemated_time = 0;
+                            else tests[tests.Count - 1].estemated_time = (int)(0.5 * tests[tests.Count - 1].amm_of_questions + 1);
                         }
                     }
                 }
