@@ -42,7 +42,17 @@ namespace PsychoVS2.Windows
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            // Выход из теста
+            var result = MessageBox.Show("Вы уверены, что хотите выйти из программы?",
+                "Подтверждение выхода",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+            
         }
 
         private void AnswerButton_Click(object sender, RoutedEventArgs e)
