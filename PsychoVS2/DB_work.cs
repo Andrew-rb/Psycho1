@@ -439,6 +439,7 @@ namespace PsychoVS2
                             string description = reader["description"] != DBNull.Value ? reader["description"].ToString() : "";
                             string point_type = reader["points_type"] != DBNull.Value ? reader["points_type"].ToString() : "";
                             int order = Convert.ToInt32(reader["position"]);
+                            if (description == "Нет описания") description = "";
 
                             Results res = new Results
                             {
