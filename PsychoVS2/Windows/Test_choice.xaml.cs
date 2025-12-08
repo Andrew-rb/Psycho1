@@ -165,7 +165,7 @@ namespace PsychoVS2.Windows
 
             var timeLabel = new FrameworkElementFactory(typeof(Label));
             timeLabel.Name = "Card_1_LabelTime";
-            timeLabel.SetValue(ContentControl.ContentProperty, $"{(int)(test_for_content.amm_of_questions * 0.5 + 1)} мин");
+            timeLabel.SetValue(ContentControl.ContentProperty, $"{test_for_content.estemated_time} мин");
             timeLabel.SetValue(Control.FontSizeProperty, 11.0);
             timeLabel.SetValue(Control.FontWeightProperty, FontWeights.Medium);
             timeLabel.SetValue(Control.ForegroundProperty, Brushes.White);

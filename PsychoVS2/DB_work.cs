@@ -84,6 +84,7 @@ namespace PsychoVS2
             }
 
             this.description = description;
+            this.estemated_time = (int)(0.5 * this.amm_of_questions + 1);
         }
 
         public int id = -1;
@@ -463,7 +464,7 @@ namespace PsychoVS2
         {
             init_db_path();
             this.load_all_tests();
-            show_all_tests();
+            //show_all_tests();
         }
     }
 }
