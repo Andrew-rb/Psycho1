@@ -165,7 +165,7 @@ namespace PsychoVS2.Windows
 
             var timeLabel = new FrameworkElementFactory(typeof(Label));
             timeLabel.Name = "Card_1_LabelTime";
-            timeLabel.SetValue(ContentControl.ContentProperty, $"{test_for_content.estemated_time} мин");
+            timeLabel.SetValue(ContentControl.ContentProperty, $"{(int)(test_for_content.amm_of_questions * 0.5 + 1)} мин");
             timeLabel.SetValue(Control.FontSizeProperty, 11.0);
             timeLabel.SetValue(Control.FontWeightProperty, FontWeights.Medium);
             timeLabel.SetValue(Control.ForegroundProperty, Brushes.White);
@@ -184,30 +184,33 @@ namespace PsychoVS2.Windows
             badgesRow.SetValue(Grid.RowProperty, 1);
             badgesRow.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
             badgesRow.SetValue(FrameworkElement.MarginProperty, new Thickness(12, 5, 12, 0));
+            if (test_for_content.type != "")
+            {
+                var typeBorder = new FrameworkElementFactory(typeof(Border));
+                typeBorder.Name = "Card_1_BorderTypeTest";
+                typeBorder.SetValue(Border.BackgroundProperty, (SolidColorBrush)new BrushConverter().ConvertFromString("#FF6590A7"));
+                typeBorder.SetValue(Border.CornerRadiusProperty, new CornerRadius(10));
+                typeBorder.SetValue(Border.PaddingProperty, new Thickness(8, 4, 8, 4));
+                typeBorder.SetValue(FrameworkElement.MarginProperty, new Thickness(0, 0, 8, 0));
 
-            var typeBorder = new FrameworkElementFactory(typeof(Border));
-            typeBorder.Name = "Card_1_BorderTypeTest";
-            typeBorder.SetValue(Border.BackgroundProperty, (SolidColorBrush)new BrushConverter().ConvertFromString("#FF6590A7"));
-            typeBorder.SetValue(Border.CornerRadiusProperty, new CornerRadius(10));
-            typeBorder.SetValue(Border.PaddingProperty, new Thickness(8, 4, 8, 4));
-            typeBorder.SetValue(FrameworkElement.MarginProperty, new Thickness(0, 0, 8, 0));
+                var typeStack = new FrameworkElementFactory(typeof(StackPanel));
+                typeStack.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
 
-            var typeStack = new FrameworkElementFactory(typeof(StackPanel));
-            typeStack.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
+                var typeLabel = new FrameworkElementFactory(typeof(Label));
+                typeLabel.Name = "Card_1_LabelTypeTest";
+                typeLabel.SetValue(ContentControl.ContentProperty, test_for_content.type);
+                typeLabel.SetValue(Control.FontSizeProperty, 11.0);
+                typeLabel.SetValue(Control.FontWeightProperty, FontWeights.Medium);
+                typeLabel.SetValue(Control.ForegroundProperty, Brushes.White);
+                typeLabel.SetValue(Control.FontFamilyProperty, new FontFamily("Montserrat"));
+                typeLabel.SetValue(Control.PaddingProperty, new Thickness(0));
+                typeLabel.SetValue(Control.BackgroundProperty, Brushes.Transparent);
+                typeLabel.SetValue(Control.BorderThicknessProperty, new Thickness(0));
 
-            var typeLabel = new FrameworkElementFactory(typeof(Label));
-            typeLabel.Name = "Card_1_LabelTypeTest";
-            typeLabel.SetValue(ContentControl.ContentProperty, test_for_content.type);
-            typeLabel.SetValue(Control.FontSizeProperty, 11.0);
-            typeLabel.SetValue(Control.FontWeightProperty, FontWeights.Medium);
-            typeLabel.SetValue(Control.ForegroundProperty, Brushes.White);
-            typeLabel.SetValue(Control.FontFamilyProperty, new FontFamily("Montserrat"));
-            typeLabel.SetValue(Control.PaddingProperty, new Thickness(0));
-            typeLabel.SetValue(Control.BackgroundProperty, Brushes.Transparent);
-            typeLabel.SetValue(Control.BorderThicknessProperty, new Thickness(0));
-
-            typeStack.AppendChild(typeLabel);
-            typeBorder.AppendChild(typeStack);
+                typeStack.AppendChild(typeLabel);
+                typeBorder.AppendChild(typeStack);
+                badgesRow.AppendChild(typeBorder);
+            }
 
             var qBorder = new FrameworkElementFactory(typeof(Border));
             qBorder.Name = "Card_1_BorderQuestions";
@@ -241,7 +244,6 @@ namespace PsychoVS2.Windows
             qStack.AppendChild(qLabel);
             qBorder.AppendChild(qStack);
 
-            badgesRow.AppendChild(typeBorder);
             badgesRow.AppendChild(qBorder);
             grid.AppendChild(badgesRow);
 

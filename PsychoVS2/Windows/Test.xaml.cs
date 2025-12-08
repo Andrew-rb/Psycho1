@@ -34,7 +34,7 @@ namespace PsychoVS2.Windows
             this.step_for_progress_bar = 100 / this.num_of_quest + 1;
             this.Progress_bar.Value = step_for_progress_bar;
             //this.choosen_test.questions.CopyTo(this.questions);
-            this.answer_buttons = new Button[6] { answer_1, answer_2, answer_3, answer_4, answer_5, answer_6 };
+            this.answer_buttons = new Button[6] { answer_1, answer_3, answer_5, answer_2, answer_4, answer_6 };
             for (int i = 0; i < 6; i++)
             {
                 this.answer_buttons[i].Tag = i;
