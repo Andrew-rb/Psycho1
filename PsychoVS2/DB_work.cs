@@ -388,8 +388,7 @@ namespace PsychoVS2
                                     }
                                 }
                             }
-
-
+                            this.current_test.estemated_time = (int)(this.current_test.amm_of_questions * 0.5 + 1);
                             return this.current_test;
                         }
                     }
