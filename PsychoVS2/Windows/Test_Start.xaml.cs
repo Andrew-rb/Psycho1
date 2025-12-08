@@ -27,14 +27,19 @@ namespace PsychoVS2.Windows
         {
             this.Time_button.Content = this.choosen_one.estemated_time;
             this.Quastion_quantity.Content = this.choosen_one.amm_of_questions.ToString() + " Вопросов";
-            this.Test_type.Content = this.choosen_one.type;
+            if (this.choosen_one.type != "")
+            {
+                this.Test_type.Content = this.choosen_one.type;
+            }
+            else
+                this.Test_type.Visibility = Visibility.Hidden;
             this.Name_label.Content = this.choosen_one.name;
             this.Description_label.Content = this.choosen_one.description;
             string[] Authors = new string[4];
-            this.choosen_one.author.Split('|').CopyTo(Authors,0);
+            this.choosen_one.author.Split('|').CopyTo(Authors, 0);
             for (int i = 0; i < 4; i++)
             {
-                if (Authors[i] != null)
+                if (Authors[i] != null && Authors[i] != "")
                 {
                     this.Author_labels[i].Content = Authors[i];
                 }
