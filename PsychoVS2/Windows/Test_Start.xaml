@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
+        xmlns:conv="clr-namespace:PsychoVS2.Converters"
         mc:Ignorable="d"
-        Title="Test_choice" Height="800" Width="1000" WindowStyle="None"
+        Title="Test_choice" Height="930" Width="1530" WindowStyle="None"
         Background="#FF3A454B">
 
     <Window.Resources>
-
+        <conv:HeightPercentConverter x:Key="HeightPercentConverter"/>
+        <conv:WidthPercentConverter x:Key="WidthPercentConverter"/>
         <!-- Анимации -->
         <Storyboard x:Key="FloatAnimation" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
@@ -172,7 +174,8 @@
               Fill="#FFFCCC3C" Opacity="0.3"
               Style="{StaticResource MovingShapeStyle}"
               HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-              Height="150" Margin="0,0,0,-50">
+              Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.161}"
+              Margin="0,0,0,-50">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -186,7 +189,8 @@
               Fill="#206A5ACD" Opacity="0.2"
               Style="{StaticResource MovingShapeStyle}"
               HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-              Height="120" Margin="100,0,0,-30">
+              Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.129}"
+              Margin="100,0,0,-30">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -207,6 +211,7 @@
                  Style="{StaticResource FloatingShapeStyle}"
                  HorizontalAlignment="Right" VerticalAlignment="Top" 
                  Margin="0,200,150,0"/>
+
         <!-- Вращающиеся треугольники -->
         <Path Data="M0,0 L40,70 L-40,70 Z" Fill="#40FF6B6B" Opacity="0.3"
               Style="{StaticResource RotatingShapeStyle}"
@@ -242,7 +247,8 @@
               Fill="#20FFFFFF" Opacity="0.15"
               Style="{StaticResource MovingShapeStyle}"
               HorizontalAlignment="Center" VerticalAlignment="Top"
-              Height="40" Margin="0,300,0,0" Stretch="Uniform" Width="200">
+              Height="40" Margin="0,300,0,0" Stretch="Uniform" 
+              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.1307}">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -264,18 +270,26 @@
                  Margin="350,0,0,200"/>
 
         <!-- Декоративные элементы (должны быть ПЕРЕД основным контентом) -->
-        <Ellipse Width="200" Height="200" Fill="#406A5ACD" Opacity="0.4" 
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.1307}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.215}" 
+                 Fill="#406A5ACD" Opacity="0.4" 
                  HorizontalAlignment="Left" VerticalAlignment="Top" 
                  Margin="-80,-80,0,0"/>
-        <Ellipse Width="150" Height="150" Fill="#40FF6B6B" Opacity="0.4" 
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.098}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.161}" 
+                 Fill="#40FF6B6B" Opacity="0.4" 
                  HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                  Margin="0,0,-60,-60"/>
 
         <!-- Дополнительные декоративные элементы -->
-        <Ellipse Width="120" Height="120" Fill="#3044D4A4" Opacity="0.3" 
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0784}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.129}" 
+                 Fill="#3044D4A4" Opacity="0.3" 
                  HorizontalAlignment="Right" VerticalAlignment="Top" 
                  Margin="0,40,-60,0"/>
-        <Ellipse Width="100" Height="100" Fill="#30FFA500" Opacity="0.3" 
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0654}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.1075}" 
+                 Fill="#30FFA500" Opacity="0.3" 
                  HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                  Margin="-50,0,0,-50"/>
 
@@ -288,20 +302,21 @@
 
             <!-- Кнопка назад -->
             <Button Grid.Row="0"
-		Width="72" Height="32"
-		Background="White"
-		BorderThickness="0"
-		Margin="20,50,0,0"
-		HorizontalAlignment="Left"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.047}" 
+                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.0344}"
+                    Background="White"
+                    BorderThickness="0"
+                    Margin="20,50,0,0"
+                    HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-		Click="BackButton_Click">
+                    Click="BackButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border"
-					Background="{TemplateBinding Background}"
-					BorderBrush="#FFDDDDDD"
-					BorderThickness="1"
-					CornerRadius="16">
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#FFDDDDDD"
+                                BorderThickness="1"
+                                CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
                             </Border.Effect>
@@ -320,89 +335,102 @@
                     <TextBlock Text="Назад" FontSize="12" Foreground="#FF666666" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
+
             <!-- Центральная область между панелями -->
             <Grid Grid.Column="1" 
-      VerticalAlignment="Top"
-      Margin="15,56,438,0"
-      Width="1000">
+                  VerticalAlignment="Top"
+                  Margin="15,56,438,0"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.6536}">
 
                 <!-- Информация о тесте -->
                 <StackPanel Orientation="Vertical" Margin="0,40,0,20">
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="Time_button" Content="⏱️ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
-                        <Button x:Name="Quastion_quantity" Content="❓ 25 вопросов" Style="{StaticResource InfoButtonStyle}" Width="156"/>
+                        <Button x:Name="Time_button" 
+                                Content="⏱️ 15-20 минут" 
+                                Style="{StaticResource InfoButtonStyle}" 
+                                Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.152}"/>
+                        <Button x:Name="Quastion_quantity" 
+                                Content="❓ 25 вопросов" 
+                                Style="{StaticResource InfoButtonStyle}" 
+                                Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.156}"/>
                     </StackPanel>
-                    <Button x:Name="Test_type" Content="🧠 Психологический тест" 
-                Style="{StaticResource InfoButtonStyle}" 
-                HorizontalAlignment="Left"
-                Margin="4,2,0,0" Width="244"/>
+                    <Button x:Name="Test_type" 
+                            Content="🧠 Психологический тест" 
+                            Style="{StaticResource InfoButtonStyle}" 
+                            HorizontalAlignment="Left"
+                            Margin="4,2,0,0" 
+                            Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.244}"/>
 
                     <StackPanel Orientation="Vertical" Margin="0,50,0,0">
                         <Label Content="👥 Авторы теста" 
-           FontSize="16" 
-           FontWeight="Bold" 
-           Foreground="#FFFCCC3C" 
-           HorizontalContentAlignment="Left"
-           Margin="0,0,0,10"/>
+                               FontSize="16" 
+                               FontWeight="Bold" 
+                               Foreground="#FFFCCC3C" 
+                               HorizontalContentAlignment="Left"
+                               Margin="0,0,0,10"/>
 
                         <!-- Автор 1 -->
-                        <Label x:Name="Author_label_1" Content="🧠 Иванов Александр Сергеевич"
-           FontSize="14"
-           FontWeight="SemiBold"
-           Foreground="#FFF5F5F5"
-           Padding="10,6"
-           Margin="0,5,0,5"
-           HorizontalAlignment="Left"
-           HorizontalContentAlignment="Left"
-           BorderBrush="#FF4FB3BF"
-           BorderThickness="1">
+                        <Label x:Name="Author_label_1" 
+                               Content="🧠 Иванов Александр Сергеевич"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#FFF5F5F5"
+                               Padding="10,6"
+                               Margin="0,5,0,5"
+                               HorizontalAlignment="Left"
+                               HorizontalContentAlignment="Left"
+                               BorderBrush="#FF4FB3BF"
+                               BorderThickness="1">
                             <Label.Background>
                                 <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
                             </Label.Background>
                         </Label>
 
                         <!-- Автор 2 -->
-                        <Label x:Name="Author_label_2" Content="🧠 Петрова Мария Алексеевна"
-           FontSize="14"
-           FontWeight="SemiBold"
-           Foreground="#FFF5F5F5"
-           Padding="10,6"
-           Margin="50,5,0,5"
-           HorizontalAlignment="Left"
-           HorizontalContentAlignment="Left"
-           BorderBrush="#FF4FB3BF"
-           BorderThickness="1">
+                        <Label x:Name="Author_label_2" 
+                               Content="🧠 Петрова Мария Алексеевна"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#FFF5F5F5"
+                               Padding="10,6"
+                               Margin="50,5,0,5"
+                               HorizontalAlignment="Left"
+                               HorizontalContentAlignment="Left"
+                               BorderBrush="#FF4FB3BF"
+                               BorderThickness="1">
                             <Label.Background>
                                 <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
                             </Label.Background>
                         </Label>
                         <!-- Автор 3 -->
-                        <Label x:Name="Author_label_3" Content="🧠 Смирнов Дмитрий Викторович"
-           FontSize="14"
-           FontWeight="SemiBold"
-           Foreground="#FFF5F5F5"
-           Padding="10,6"
-           Margin="0,5,0,5"
-           HorizontalAlignment="Left"
-           HorizontalContentAlignment="Left"
-           BorderBrush="#FF4FB3BF"
-           BorderThickness="1">
+                        <Label x:Name="Author_label_3" 
+                               Content="🧠 Смирнов Дмитрий Викторович"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#FFF5F5F5"
+                               Padding="10,6"
+                               Margin="0,5,0,5"
+                               HorizontalAlignment="Left"
+                               HorizontalContentAlignment="Left"
+                               BorderBrush="#FF4FB3BF"
+                               BorderThickness="1">
                             <Label.Background>
                                 <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
                             </Label.Background>
                         </Label>
 
                         <!-- Автор 4 -->
-                        <Label x:Name="Author_label_4" Content="🧠 Кузнецова Елена Владимировна"
-           FontSize="14"
-           FontWeight="SemiBold"
-           Foreground="#FFF5F5F5"
-           Padding="10,6"
-           Margin="50,5,0,5"
-           HorizontalAlignment="Left"
-           HorizontalContentAlignment="Left"
-           BorderBrush="#FF7BC9D2"
-           BorderThickness="1">
+                        <Label x:Name="Author_label_4" 
+                               Content="🧠 Кузнецова Елена Владимировна"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#FFF5F5F5"
+                               Padding="10,6"
+                               Margin="50,5,0,5"
+                               HorizontalAlignment="Left"
+                               HorizontalContentAlignment="Left"
+                               BorderBrush="#FF7BC9D2"
+                               BorderThickness="1">
                             <Label.Background>
                                 <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
                             </Label.Background>
@@ -411,50 +439,55 @@
                 </StackPanel>
 
                 <!-- Название теста (напротив первой ступени) -->
-                <Label x:Name="Name_label" Content="Шкала диагностики расстройств биполярного" 
-           FontSize="28" 
-           FontWeight="Bold" 
-           Foreground="White"
-           Margin="0,615,0,0"
-           HorizontalAlignment="Left"
-           VerticalAlignment="Top"
-           HorizontalContentAlignment="Left"
-           VerticalContentAlignment="Top" Width="743">
+                <Label x:Name="Name_label" 
+                       Content="Шкала диагностики расстройств биполярного" 
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       Foreground="White"
+                       Margin="0,615,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       HorizontalContentAlignment="Left"
+                       VerticalContentAlignment="Top" 
+                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.743}">
                     <Label.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Left"/>
+                                       TextWrapping="Wrap" 
+                                       TextAlignment="Left"/>
                         </DataTemplate>
                     </Label.ContentTemplate>
                 </Label>
 
                 <!-- Описание теста (под названием, напротив второй ступени) -->
-                <Label x:Name="Description_label" Content= "Психологический возраст – это не просто модное понятие или очередной способ узнать что-то новое о себе. Это гораздо более глубокая характеристика, которая отражает ваш внутренний мир и психологическое состояние. В отличие от биологического или хронологического возраста, психологический возраст формируется под влиянием эмоциональных и социальных факторов, и он может значительно изменяться в зависимости от жизненных обстоятельств. Временами он молодеет, а порой может стареть, отражая ваш личный опыт, мировоззрение и внутреннюю гармонию.
+                <Label x:Name="Description_label" 
+                       Content= "Психологический возраст – это не просто модное понятие или очередной способ узнать что-то новое о себе. Это гораздо более глубокая характеристика, которая отражает ваш внутренний мир и психологическое состояние. В отличие от биологического или хронологического возраста, психологический возраст формируется под влиянием эмоциональных и социальных факторов, и он может значительно изменяться в зависимости от жизненных обстоятельств. Временами он молодеет, а порой может стареть, отражая ваш личный опыт, мировоззрение и внутреннюю гармонию.
 Почему важно знать свой психологический возраст? Этот параметр способен многое рассказать о вас. Он влияет на ваши увлечения, предпочтения, выбор целей и даже на то, как вы планируете свой досуг и строите взаимоотношения. В нашей трехфакторной модели психологического возраста выделены ключевые составляющие: позитивность, увлеченность и открытость новому опыту. Эти показатели помогают глубже понять себя, свои внутренние потребности и ресурсы.
 Определить свой психологический возраст можно с помощью онлайн."
-           FontSize="14" 
-           Foreground="#CCFFFFFF"
-           Margin="0,695,0,0"
-           VerticalAlignment="Top"
-           HorizontalContentAlignment="Left"
-           VerticalContentAlignment="Top" Width="850" HorizontalAlignment="Left">
+                       FontSize="14" 
+                       Foreground="#CCFFFFFF"
+                       Margin="0,695,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalContentAlignment="Left"
+                       VerticalContentAlignment="Top" 
+                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.85}" 
+                       HorizontalAlignment="Left">
                     <Label.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" 
-                           TextWrapping="Wrap" 
-                           TextAlignment="Justify"/>
+                                       TextWrapping="Wrap" 
+                                       TextAlignment="Justify"/>
                         </DataTemplate>
                     </Label.ContentTemplate>
                 </Label>
                 <!-- Дополнительная информация -->
                 <StackPanel Orientation="Horizontal" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Bottom"
-                Margin="0,880,0,0">
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Bottom"
+                            Margin="0,880,0,0">
                     <Label Content="🔒 Ваши ответы сохраняются анонимно" 
-               FontSize="11" 
-               Foreground="#99FFFFFF"/>
+                           FontSize="11" 
+                           Foreground="#99FFFFFF"/>
                 </StackPanel>
             </Grid>
 
@@ -469,7 +502,6 @@
                     <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.2"/>
                 </Border.Effect>
 
-
                 <Border.Clip>
                     <GeometryGroup>
                         <!-- Основной прямоугольник -->
@@ -482,10 +514,10 @@
                                 <PathFigure StartPoint="0,630" IsClosed="True">
                                     <LineSegment Point="140,630"/>
                                     <ArcSegment Point="155,645"
-                        Size="15,15"
-                        RotationAngle="90"
-                        IsLargeArc="False"
-                        SweepDirection="Clockwise"/>
+                                                Size="15,15"
+                                                RotationAngle="90"
+                                                IsLargeArc="False"
+                                                SweepDirection="Clockwise"/>
                                     <LineSegment Point="155,690"/>
                                     <LineSegment Point="0,690"/>
                                 </PathFigure>
@@ -494,10 +526,10 @@
                                 <PathFigure StartPoint="0,690" IsClosed="True">
                                     <LineSegment Point="270,690"/>
                                     <ArcSegment Point="285,705"
-                        Size="15,15"
-                        RotationAngle="90"
-                        IsLargeArc="False"
-                        SweepDirection="Clockwise"/>
+                                                Size="15,15"
+                                                RotationAngle="90"
+                                                IsLargeArc="False"
+                                                SweepDirection="Clockwise"/>
                                     <LineSegment Point="285,1000"/>
                                     <LineSegment Point="0,1000"/>
                                 </PathFigure>
@@ -505,8 +537,6 @@
                         </PathGeometry>
                     </GeometryGroup>
                 </Border.Clip>
-
-
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -526,15 +556,15 @@
 
                     <!-- Кнопка начала теста -->
                     <Button Grid.Row="1" 
-        Content="Начать тест" 
-        Style="{StaticResource StartTestButtonStyle}"
-        HorizontalAlignment="Center"
-        Margin="320,40,40,40"
-        VerticalAlignment="Bottom"
-        Width="200"
-        Height="50"
-        FontSize="18"
-        Click="StartTestButton_Click"/>
+                            Content="Начать тест" 
+                            Style="{StaticResource StartTestButtonStyle}"
+                            HorizontalAlignment="Center"
+                            Margin="320,40,40,40"
+                            VerticalAlignment="Bottom"
+                            Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.2}"
+                            Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.0538}"
+                            FontSize="18"
+                            Click="StartTestButton_Click"/>
                 </Grid>
             </Border>
         </Grid>

@@ -4,12 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2"
+        xmlns:conv="clr-namespace:PsychoVS2.Converters"
         mc:Ignorable="d"
         Title="Результаты тестирования" 
         Height="920" 
         Width="1500"
         Background="#FF3A454B"
         FontFamily="Segoe UI" WindowStyle="None">
+
+    <Window.Resources>
+        <conv:HeightPercentConverter x:Key="HeightPercentConverter"/>
+        <conv:WidthPercentConverter x:Key="WidthPercentConverter"/>
+    </Window.Resources>
 
     <Grid>
         <Grid.Background>
@@ -19,11 +25,17 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Ellipse Width="300" Height="300" Opacity="0.05" Fill="#FF1976D2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-100,-100"/>
-        <Ellipse Width="200" Height="200" Opacity="0.05" Fill="#FF1976D2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-100,-100"/>
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.2}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.326}" 
+                 Opacity="0.05" Fill="#FF1976D2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-100,-100,0,0"/>
+        <Ellipse Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.133}" 
+                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.217}" 
+                 Opacity="0.05" Fill="#FF1976D2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-100,-100"/>
 
         <!-- Верхняя панель -->
-        <Border Background="#FFF3B90D" Height="80" VerticalAlignment="Top">
+        <Border Background="#FFF3B90D" 
+                Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.087}" 
+                VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="3"/>
             </Border.Effect>
@@ -34,7 +46,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Viewbox Grid.Column="0" Width="40" Height="40" Margin="20,0" OpacityMask="#FF39D124">
+                <Viewbox Grid.Column="0" 
+                         Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0267}" 
+                         Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.0435}" 
+                         Margin="20,0,0,0" 
+                         OpacityMask="#FF39D124">
                     <Canvas Width="24" Height="24">
                         <Path Fill="White" Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z"/>
                     </Canvas>
@@ -44,12 +60,16 @@
                 <TextBlock Grid.Column="1" 
                            Text="РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЯ" 
                            Foreground="White" 
-                           FontSize="24" 
+                           FontSize="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.016}" 
                            FontWeight="SemiBold"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
 
-                <Border Grid.Column="2" Width="40" Height="40" Margin="20,0" CornerRadius="20"
+                <Border Grid.Column="2" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0267}" 
+                        Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.0435}" 
+                        Margin="0,0,20,0" 
+                        CornerRadius="20"
                         BorderBrush="White" BorderThickness="2" Opacity="0.5"/>
             </Grid>
         </Border>
@@ -65,7 +85,7 @@
             <TextBlock Grid.Row="0" 
                        Text="Ваши результаты" 
                        Foreground="White" 
-                       FontSize="18" 
+                       FontSize="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.012}" 
                        FontWeight="Medium"
                        Margin="0,0,0,20"
                        HorizontalAlignment="Center"/>
@@ -94,7 +114,7 @@
         <Label x:Name="ResultTemplate" 
                Visibility="Collapsed"
                Content="Template"
-               FontSize="16"
+               FontSize="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0107}"
                Foreground="#333333"
                Background="White"
                Padding="20"
@@ -118,7 +138,9 @@
         </Label>
 
         <!-- Нижняя панель с кнопкой -->
-        <Border Background="White" Height="100" VerticalAlignment="Bottom">
+        <Border Background="White" 
+                Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.1087}" 
+                VerticalAlignment="Bottom">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.1" ShadowDepth="-3"/>
             </Border.Effect>
@@ -129,7 +151,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Grid.Column="0" Height="1" Fill="#E0E0E0" VerticalAlignment="Center" Margin="40,0"/>
+                <Rectangle Grid.Column="0" Height="1" Fill="#E0E0E0" VerticalAlignment="Center" Margin="40,0,0,0"/>
 
                 <!-- Кнопка выхода -->
                 <Button Grid.Column="1" 
@@ -137,12 +159,15 @@
                         x:Name="ExitButton" 
                         Click="ExitButton_Click"
                         Padding="60,10"
-                        FontSize="16"
+                        FontSize="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.0107}"
                         FontWeight="SemiBold"
                         Background="#FF6A5ACD"
                         Foreground="White"
                         BorderThickness="0"
-                        Cursor="Hand" Margin="0,0,0,32">
+                        Cursor="Hand" 
+                        Margin="0,0,0,32"
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.2}"
+                        Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.65}">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="3"/>
                     </Button.Effect>
@@ -176,7 +201,9 @@
             </Grid>
         </Border>
 
-        <Border Background="#F5F5F5" Height="30" VerticalAlignment="Bottom">
+        <Border Background="#F5F5F5" 
+                Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource HeightPercentConverter}, ConverterParameter=0.0326}" 
+                VerticalAlignment="Bottom">
             <Grid/>
         </Border>
     </Grid>

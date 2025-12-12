@@ -128,6 +128,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\HeightPercentConverter.cs" />
     <Compile Include="DB_work.cs" />
     <Compile Include="Windows\New_result_window.xaml.cs">
       <DependentUpon>New_result_window.xaml</DependentUpon>
