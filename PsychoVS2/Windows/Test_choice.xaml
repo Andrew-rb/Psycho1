@@ -5,60 +5,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
+        xmlns:conv="clr-namespace:PsychoVS2.Converters"
         mc:Ignorable="d"
         Title="Test_Start" Height="1174" Width="1653" Background="#FF3A454B" WindowStyle="None" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <conv:HeightPercentConverter x:Key="HeightPercentConverter"/>
+        <conv:WidthPercentConverter x:Key="WidthPercentConverter"/>
+    </Window.Resources>
+
     <Grid>
-        <!-- Заголовок сверху по центру -->
-        <Label Content="Тесты"
-                   HorizontalAlignment="Center" VerticalAlignment="Top"
-                   FontSize="32" FontWeight="Bold" Foreground="#FFFFCA28"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя часть с заголовком и кнопкой закрытия -->
+        <Grid Grid.Row="0" Margin="0,20,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Заголовок сверху по центру -->
+            <Label Content="Тесты"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="32"
+                   FontWeight="Bold" 
+                   Foreground="#FFFFCA28"
                    FontFamily="Montserrat"
-                   Padding="0" Background="Transparent" BorderThickness="0"/>
+                   Padding="0" 
+                   Background="Transparent" 
+                   BorderThickness="0"/>
 
-        <Canvas>
+            <!-- Кнопка закрытия -->
+            <Button x:Name="CloseButton" 
+                    Grid.Column="1"
+                    Content="×" 
+                    Width="35"
+                    Height="35"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center" 
+                    Margin="0,0,15,0" 
+                    Click="CloseButton_Click"
+                    Background="#FF6B6B6B" 
+                    Foreground="White" 
+                    FontSize="18"
+                    FontWeight="Bold" 
+                    FontFamily="Arial">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="border" 
+                                    Background="{TemplateBinding Background}" 
+                                    CornerRadius="17.5"
+                                    SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"
+                                                Margin="0"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE53935"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFC62828"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
 
-            <!-- КНОПКА 1  -->
-
-            <ScrollViewer Height="1023" Width="1498" Canvas.Top="42" Canvas.Left="75" VerticalScrollBarVisibility="Auto">
-                <Grid>
-                    <WrapPanel Orientation="Horizontal"
-               HorizontalAlignment="Stretch"
-               VerticalAlignment="Stretch"
-               ItemHeight="448" ItemWidth="349"
-               x:Name="Panel_for_buttons"/>
-                </Grid>
+        <!-- Основной контейнер с карточками -->
+        <Border Grid.Row="1" 
+                Margin="75,0,75,20"
+                Background="Transparent">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <WrapPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           ItemHeight="448"
+                           ItemWidth="349"
+                           x:Name="Panel_for_buttons">
+                    <!-- Отступы между карточками -->
+                    <WrapPanel.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="Margin" Value="20,20"/>
+                        </Style>
+                    </WrapPanel.Resources>
+                </WrapPanel>
             </ScrollViewer>
-
-        </Canvas>
-
-        <!-- Кнопка закрытия с плавным скруглением -->
-        <Button x:Name="CloseButton" Content="×" Width="35" Height="35" 
-                HorizontalAlignment="Right" VerticalAlignment="Top" 
-                Margin="0,15,15,0" Click="CloseButton_Click"
-                Background="#FF6B6B6B" Foreground="White" 
-                FontSize="18" FontWeight="Bold" FontFamily="Arial">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <Border x:Name="border" 
-                                Background="{TemplateBinding Background}" 
-                                CornerRadius="17.5"
-                                SnapsToDevicePixels="True">
-                            <ContentPresenter HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center"
-                                            Margin="0"/>
-                        </Border>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#FFE53935"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#FFC62828"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        </Border>
     </Grid>
 </Window>
